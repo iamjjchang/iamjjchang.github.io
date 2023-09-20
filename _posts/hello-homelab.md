@@ -12,6 +12,7 @@ Hello and welcome to my homelab docs site!
 
 ```javascript
 console.log()
+console.log()
 ```
 
 ```yml
