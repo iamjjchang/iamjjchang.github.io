@@ -2,9 +2,9 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://localhost:4000/</id>
-  <title>HomeLab Docs</title>
+  <title>HomeLab Docs1</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2023-09-20T23:15:17+08:00</updated>
+  <updated>2023-09-21T01:10:00+08:00</updated>
   <author>
     <name>your_full_name</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,136 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Hello HomeLab</title>
+    <link href="http://localhost:4000/posts/Hello-HomeLab/" rel="alternate" type="text/html" title="Hello HomeLab" />
+    <published>2023-09-16T01:00:00+08:00</published>
+  
+    <updated>2023-09-16T01:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Hello-HomeLab/</id>
+    <content src="http://localhost:4000/posts/Hello-HomeLab/" />
+    <author>
+      <name>your_full_name</name>
+    </author>
+
+  
+    
+    <category term="HomeLab" />
+    
+    <category term="software" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Welcome
+
+Hello and welcome to my homelab docs site!
+
+console.log()
+console.log()
+console.log()
+
+
+name: 'push-remote'
+
+on:
+    push:
+        branches:
+        - master
+        paths-ignore:
+        - .gitignore
+        - READ.md
+        - LICENSE
+
+
+sudo apt update &amp;amp;&amp;amp; sudo apt update
+pwd
+pwd
+
+
+Photos
+
+
+
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Testing</title>
+    <link href="http://localhost:4000/posts/Web-Scraping/" rel="alternate" type="text/html" title="Testing" />
+    <published>2023-09-16T01:00:00+08:00</published>
+  
+    <updated>2023-09-16T01:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Web-Scraping/</id>
+    <content src="http://localhost:4000/posts/Web-Scraping/" />
+    <author>
+      <name>your_full_name</name>
+    </author>
+
+  
+    
+    <category term="Home" />
+    
+    <category term="software" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Welcome
+
+Hello and welcome to my homelab docs site!
+
+console.log()
+console.log()
+console.log()
+
+
+name: 'push-remote'
+
+on:
+    push:
+        branches:
+        - master
+        paths-ignore:
+        - .gitignore
+        - READ.md
+        - LICENSE
+
+
+sudo apt update &amp;amp;&amp;amp; sudo apt update
+pwd
+pwd
+
+
+Photos
+
+
+
+    </summary>
+  
+
+  </entry>
 
 </feed>
 

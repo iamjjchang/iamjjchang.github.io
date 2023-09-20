@@ -1,4 +1,38 @@
 [
   
+  {
+    "title": "Hello HomeLab",
+    "url": "/posts/Hello-HomeLab/",
+    "categories": "HomeLab, software",
+    "tags": "servers, dell",
+    "date": "2023-09-16 01:00:00 +0800",
+    
+
+
+
+
+
+    
+    "snippet": "WelcomeHello and welcome to my homelab docs site!console.log()console.log()console.log()name: 'push-remote'on:    push:        branches:        - master        paths-ignore:        - .gitignore    ...",
+    "content": "WelcomeHello and welcome to my homelab docs site!console.log()console.log()console.log()name: 'push-remote'on:    push:        branches:        - master        paths-ignore:        - .gitignore        - READ.md        - LICENSEsudo apt update &amp;&amp; sudo apt updatepwdpwdPhotos"
+  },
+  
+  {
+    "title": "Testing",
+    "url": "/posts/Web-Scraping/",
+    "categories": "Home, software",
+    "tags": "servers, dell",
+    "date": "2023-09-16 01:00:00 +0800",
+    
+
+
+
+
+
+    
+    "snippet": "WelcomeHello and welcome to my homelab docs site!console.log()console.log()console.log()name: 'push-remote'on:    push:        branches:        - master        paths-ignore:        - .gitignore    ...",
+    "content": "WelcomeHello and welcome to my homelab docs site!console.log()console.log()console.log()name: 'push-remote'on:    push:        branches:        - master        paths-ignore:        - .gitignore        - READ.md        - LICENSEsudo apt update &amp;&amp; sudo apt updatepwdpwdPhotos"
+  }
+  
 ]
 
