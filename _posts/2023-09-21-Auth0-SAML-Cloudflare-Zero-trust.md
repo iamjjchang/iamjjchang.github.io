@@ -3,22 +3,22 @@
 1. Sign up Auth0 (https://auth0.com/signup)
 
 2. Create User
-![](./Pics/1.usermanagement.png)
+![](../images/1.usermanagement.png)
 
-![](./Pics/2.createuser.png)
+![](../images/2.createuser.png)
 
 3. Create an Application → Applications > Applications
 
-![](./Pics/3.application.jpg)
+![](../images/3.application.jpg)
 
 4. Give it a name eg. Cloudflare Access and select **Single Page Web Application**
 
-![](./Pics/4.cloudflareaccess.png)
+![](../images/4.cloudflareaccess.png)
 
 
 Addon SAML2 Web App → Under this Application > Addons > **Select SAML2 WEB APP**
 
-![](./Pics/5.SAML2.png)
+![](../images/5.SAML2.png)
 
 
 Select **Settings** \
@@ -27,14 +27,14 @@ Scroll down and and click on **Enable**
 <your-team-name> can be found under **Cloudflare Zero Trust > Setting > General Settings** 
 
 
-![](./Pics/6.callback.png)
+![](../images/6.callback.png)
 
 
 5. In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard \
    1. Download Auth0 certificate & Metadata
    2. Take down of Issuer & Identity Provider Login URL
 
-![](./Pics/7.addon.png)
+![](../images/7.addon.png)
 
 # Configure Cloudflare Zero Trust dashboard
 
@@ -42,7 +42,7 @@ Scroll down and and click on **Enable**
 2. Go to Settings > Authentication
 3. On **Login methods** section, Click **Add new** > Click **SAML**
 
-![](./Pics/8.addsaml.png)
+![](../images/8.addsaml.png)
 
 4. In Email attribute name, fill in this 👇
     
