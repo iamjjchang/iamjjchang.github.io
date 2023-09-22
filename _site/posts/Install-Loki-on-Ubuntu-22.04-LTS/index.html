@@ -39,25 +39,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.2" />
-<meta property="og:title" content="Auth0 SAML Cloudflare Zero trust" />
+<meta property="og:title" content="Install Loki on Ubuntu 22.04 LTS" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Auth0 SAML Cloudflare Zero trust Sign up Auth0 (https://auth0.com/signup) Create User Create an Application → Applications &gt; Applications Give it a name eg. Cloudflare Access and select Single Page Web Application Addon SAML2 Web App → Under this Application &gt; Addons &gt; Select SAML2 WEB APP Select Settings Under Application Callback URL input https://.cloudflareaccess.com/cdn-cgi/access/callback \ Scroll down and and click on **Enable** &lt;your-team-name&gt; can be found under Cloudflare Zero Trust &gt; Setting &gt; General Settings In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard Download Auth0 certificate &amp; Metadata Take down of Issuer &amp; Identity Provider Login URL Configure Cloudflare Zero Trust dashboard Login to your Zero Trust Dashboard Go to Settings &gt; Authentication On Login methods section, Click Add new &gt; Click SAML In Email attribute name, fill in this 👇 [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress] Once done click on test, you can see this result below" />
-<meta property="og:description" content="Auth0 SAML Cloudflare Zero trust Sign up Auth0 (https://auth0.com/signup) Create User Create an Application → Applications &gt; Applications Give it a name eg. Cloudflare Access and select Single Page Web Application Addon SAML2 Web App → Under this Application &gt; Addons &gt; Select SAML2 WEB APP Select Settings Under Application Callback URL input https://.cloudflareaccess.com/cdn-cgi/access/callback \ Scroll down and and click on **Enable** &lt;your-team-name&gt; can be found under Cloudflare Zero Trust &gt; Setting &gt; General Settings In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard Download Auth0 certificate &amp; Metadata Take down of Issuer &amp; Identity Provider Login URL Configure Cloudflare Zero Trust dashboard Login to your Zero Trust Dashboard Go to Settings &gt; Authentication On Login methods section, Click Add new &gt; Click SAML In Email attribute name, fill in this 👇 [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress] Once done click on test, you can see this result below" />
-<link rel="canonical" href="http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/" />
-<meta property="og:url" content="http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/" />
+<meta name="description" content="Install Loki on Ubuntu 22.04 LTS Install Loki Get the latest version tag of Loki from GitHub. 1 LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;tag_name&quot;: &quot;v\K[0-9.]+&#39;) Create a new directory to store Loki binary and configuration file. 1 sudo mkdir /opt/loki Download archive from releases page of the Loki repository. 1 sudo wget -qO /opt/loki/loki.gz &quot;https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip&quot; Extract binary file from archive: 1 sudo gunzip /opt/loki/loki.gz Set execute permission for file: 1 sudo chmod a+x /opt/loki/loki In /usr/local/bin directory we can create a symbolic link to the loki command: 1 sudo ln -s /opt/loki/loki /usr/local/bin/loki Now loki command is available for all users as a system-wide command. Download configuration file for Loki: 1 sudo wget -qO /opt/loki/loki-local-config.yaml &quot;https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml&quot; To verify installation, we can check Loki version: 1 loki -version Run Loki as a service We can configure systemd for running Loki as a service. Create a systemd unit file: 1 sudo nano /etc/systemd/system/loki.service Add the following content to the file: 1 2 3 4 5 6 7 8 9 10 [Unit] Description=Loki log aggregation system After=network.target [Service] ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml Restart=always [Install] WantedBy=multi-user.target Start Loki service: 1 sudo service loki start To make sure that Loki service is running, you can use the following command: 1 sudo service loki status Also you can stop or restart the service: 1 2 sudo service loki stop sudo service loki restart To enable Loki to start on boot, run the following command: 1 sudo systemctl enable loki Uninstall Loki To completely remove the Loki, stop the service and remove a systemd unit file. 1 2 3 4 5 sudo service loki stop sudo systemctl disable loki sudo rm -rf /etc/systemd/system/loki.service sudo systemctl daemon-reload sudo systemctl reset-failed Delete the installation directory: 1 sudo rm -rf /opt/loki Remove symbolic link: 1 sudo rm -rf /usr/local/bin/loki" />
+<meta property="og:description" content="Install Loki on Ubuntu 22.04 LTS Install Loki Get the latest version tag of Loki from GitHub. 1 LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;tag_name&quot;: &quot;v\K[0-9.]+&#39;) Create a new directory to store Loki binary and configuration file. 1 sudo mkdir /opt/loki Download archive from releases page of the Loki repository. 1 sudo wget -qO /opt/loki/loki.gz &quot;https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip&quot; Extract binary file from archive: 1 sudo gunzip /opt/loki/loki.gz Set execute permission for file: 1 sudo chmod a+x /opt/loki/loki In /usr/local/bin directory we can create a symbolic link to the loki command: 1 sudo ln -s /opt/loki/loki /usr/local/bin/loki Now loki command is available for all users as a system-wide command. Download configuration file for Loki: 1 sudo wget -qO /opt/loki/loki-local-config.yaml &quot;https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml&quot; To verify installation, we can check Loki version: 1 loki -version Run Loki as a service We can configure systemd for running Loki as a service. Create a systemd unit file: 1 sudo nano /etc/systemd/system/loki.service Add the following content to the file: 1 2 3 4 5 6 7 8 9 10 [Unit] Description=Loki log aggregation system After=network.target [Service] ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml Restart=always [Install] WantedBy=multi-user.target Start Loki service: 1 sudo service loki start To make sure that Loki service is running, you can use the following command: 1 sudo service loki status Also you can stop or restart the service: 1 2 sudo service loki stop sudo service loki restart To enable Loki to start on boot, run the following command: 1 sudo systemctl enable loki Uninstall Loki To completely remove the Loki, stop the service and remove a systemd unit file. 1 2 3 4 5 sudo service loki stop sudo systemctl disable loki sudo rm -rf /etc/systemd/system/loki.service sudo systemctl daemon-reload sudo systemctl reset-failed Delete the installation directory: 1 sudo rm -rf /opt/loki Remove symbolic link: 1 sudo rm -rf /usr/local/bin/loki" />
+<link rel="canonical" href="http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/" />
+<meta property="og:url" content="http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/" />
 <meta property="og:site_name" content="HomeLab Docs1" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-22T01:00:00+08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Auth0 SAML Cloudflare Zero trust" />
+<meta property="twitter:title" content="Install Loki on Ubuntu 22.04 LTS" />
 <meta name="twitter:site" content="@twitter_username" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-09-22T20:18:35+08:00","datePublished":"2023-09-22T01:00:00+08:00","description":"Auth0 SAML Cloudflare Zero trust Sign up Auth0 (https://auth0.com/signup) Create User Create an Application → Applications &gt; Applications Give it a name eg. Cloudflare Access and select Single Page Web Application Addon SAML2 Web App → Under this Application &gt; Addons &gt; Select SAML2 WEB APP Select Settings Under Application Callback URL input https://.cloudflareaccess.com/cdn-cgi/access/callback \\ Scroll down and and click on **Enable** &lt;your-team-name&gt; can be found under Cloudflare Zero Trust &gt; Setting &gt; General Settings In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard Download Auth0 certificate &amp; Metadata Take down of Issuer &amp; Identity Provider Login URL Configure Cloudflare Zero Trust dashboard Login to your Zero Trust Dashboard Go to Settings &gt; Authentication On Login methods section, Click Add new &gt; Click SAML In Email attribute name, fill in this 👇 [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress] Once done click on test, you can see this result below","headline":"Auth0 SAML Cloudflare Zero trust","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/"},"url":"http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-09-22T01:00:00+08:00","datePublished":"2023-09-22T01:00:00+08:00","description":"Install Loki on Ubuntu 22.04 LTS Install Loki Get the latest version tag of Loki from GitHub. 1 LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;tag_name&quot;: &quot;v\\K[0-9.]+&#39;) Create a new directory to store Loki binary and configuration file. 1 sudo mkdir /opt/loki Download archive from releases page of the Loki repository. 1 sudo wget -qO /opt/loki/loki.gz &quot;https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip&quot; Extract binary file from archive: 1 sudo gunzip /opt/loki/loki.gz Set execute permission for file: 1 sudo chmod a+x /opt/loki/loki In /usr/local/bin directory we can create a symbolic link to the loki command: 1 sudo ln -s /opt/loki/loki /usr/local/bin/loki Now loki command is available for all users as a system-wide command. Download configuration file for Loki: 1 sudo wget -qO /opt/loki/loki-local-config.yaml &quot;https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml&quot; To verify installation, we can check Loki version: 1 loki -version Run Loki as a service We can configure systemd for running Loki as a service. Create a systemd unit file: 1 sudo nano /etc/systemd/system/loki.service Add the following content to the file: 1 2 3 4 5 6 7 8 9 10 [Unit] Description=Loki log aggregation system After=network.target [Service] ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml Restart=always [Install] WantedBy=multi-user.target Start Loki service: 1 sudo service loki start To make sure that Loki service is running, you can use the following command: 1 sudo service loki status Also you can stop or restart the service: 1 2 sudo service loki stop sudo service loki restart To enable Loki to start on boot, run the following command: 1 sudo systemctl enable loki Uninstall Loki To completely remove the Loki, stop the service and remove a systemd unit file. 1 2 3 4 5 sudo service loki stop sudo systemctl disable loki sudo rm -rf /etc/systemd/system/loki.service sudo systemctl daemon-reload sudo systemctl reset-failed Delete the installation directory: 1 sudo rm -rf /opt/loki Remove symbolic link: 1 sudo rm -rf /usr/local/bin/loki","headline":"Install Loki on Ubuntu 22.04 LTS","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/"},"url":"http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>Auth0 SAML Cloudflare Zero trust | HomeLab Docs1
+  <title>Install Loki on Ubuntu 22.04 LTS | HomeLab Docs1
   </title>
 
   <!--
@@ -468,7 +468,7 @@
         
           
             
-              <span>Auth0 SAML Cloudflare Zero trust</span>
+              <span>Install Loki on Ubuntu 22.04 LTS</span>
             
 
           
@@ -542,703 +542,6 @@
 
 
 
-  
-  
-
-  <!-- CDN URL -->
-  
-
-  <!-- Add image path -->
-  
-
-  
-    
-      
-      
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-
-  
-
-
 
 <!-- Add header for code snippets -->
 
@@ -1252,6 +555,53 @@
 
   
   
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
 
   
 
@@ -1279,7 +629,7 @@
 
 
 <header>
-  <h1 data-toc-skip>Auth0 SAML Cloudflare Zero trust</h1>
+  <h1 data-toc-skip>Install Loki on Ubuntu 22.04 LTS</h1>
 
   <div class="post-meta text-muted">
     <!-- published date -->
@@ -1307,29 +657,6 @@
     </span>
 
     <!-- lastmod date -->
-    
-      <span>
-        Updated
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-  data-ts="1695385115"
-  data-df="ll"
-  
-    data-bs-toggle="tooltip" data-bs-placement="bottom"
-  
->
-  Sep 22, 2023
-</time>
-
-      </span>
     
 
     
@@ -1369,7 +696,7 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="149 words"
+  title="298 words"
 >
   <em>1 min</em> read</span>
 
@@ -1380,78 +707,161 @@
 </header>
 
 <div class="content">
-  <h1 id="auth0-saml-cloudflare-zero-trust">Auth0 SAML Cloudflare Zero trust</h1>
+  <h1 id="install-loki-on-ubuntu-2204-lts">Install Loki on Ubuntu 22.04 LTS</h1>
 
-<ol>
-  <li>Sign up Auth0 (https://auth0.com/signup)</li>
-</ol>
+<h2 id="install-loki"><span class="me-2">Install Loki</span><a href="#install-loki" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p><a href="/assets/images/Zerotrust/1.usermanagement.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/1.usermanagement.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Get the latest version tag of Loki from GitHub.</p>
 
-<ol>
-  <li>Create User</li>
-</ol>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>LOKI_VERSION=$(curl -s "https://api.github.com/repos/grafana/loki/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+</pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/images/Zerotrust/2.createuser.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/2.createuser.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Create a new directory to store Loki binary and configuration file.</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo mkdir /opt/loki
+</pre></td></tr></tbody></table></code></div></div>
 
-<ol>
-  <li>Create an Application → Applications &gt; Applications</li>
-</ol>
+<p>Download archive from releases page of the Loki repository.</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo wget -qO /opt/loki/loki.gz "https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip"
+</pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/images/Zerotrust/3.application.jpg" class="popup img-link "><img data-src="/assets/images/Zerotrust/3.application.jpg" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Extract binary file from archive:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo gunzip /opt/loki/loki.gz
+</pre></td></tr></tbody></table></code></div></div>
 
-<ol>
-  <li>Give it a name eg. Cloudflare Access and select <strong>Single Page Web Application</strong></li>
-</ol>
+<p>Set execute permission for file:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo chmod a+x /opt/loki/loki
+</pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/images/Zerotrust/4.cloudflareaccess.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/4.cloudflareaccess.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>In <code class="language-plaintext highlighter-rouge">/usr/local/bin</code> directory we can create a symbolic link to the loki command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo ln -s /opt/loki/loki /usr/local/bin/loki
+</pre></td></tr></tbody></table></code></div></div>
 
-<p>Addon SAML2 Web App → Under this Application &gt; Addons &gt; <strong>Select SAML2 WEB APP</strong></p>
+<p>Now loki command is available for all users as a system-wide command.<br />
+Download configuration file for Loki:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo wget -qO /opt/loki/loki-local-config.yaml "https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml"
+</pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/images/Zerotrust/5.SAML2.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/5.SAML2.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>To verify installation, we can check Loki version:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>loki -version
+</pre></td></tr></tbody></table></code></div></div>
 
-<p>Select <strong>Settings</strong> <br />
-Under <strong>Application Callback URL</strong> input  https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback \ 
-Scroll down and and click on **Enable**</your-team-name></p>
+<h2 id="run-loki-as-a-service"><span class="me-2">Run Loki as a service</span><a href="#run-loki-as-a-service" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;your-team-name&gt;</code> can be found under <strong>Cloudflare Zero Trust &gt; Setting &gt; General Settings</strong></p>
+<p>We can configure systemd for running Loki as a service. Create a systemd unit file:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo nano /etc/systemd/system/loki.service
+</pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/images/Zerotrust/6.callback.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/6.callback.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Add the following content to the file:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>[Unit]
+Description=Loki log aggregation system
+After=network.target
 
-<ol>
-  <li>In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard 
-    <ol>
-      <li>Download Auth0 certificate &amp; Metadata</li>
-      <li>Take down of Issuer &amp; Identity Provider Login URL</li>
-    </ol>
-  </li>
-</ol>
+[Service]
+ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml
+Restart=always
 
-<p><a href="/assets/images/Zerotrust/7.addon.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/7.addon.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+[Install]
+WantedBy=multi-user.target
+</pre></td></tr></tbody></table></code></div></div>
 
-<h1 id="configure-cloudflare-zero-trust-dashboard">Configure Cloudflare Zero Trust dashboard</h1>
+<p>Start Loki service:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo service loki start
+</pre></td></tr></tbody></table></code></div></div>
 
-<ol>
-  <li>Login to your Zero Trust  Dashboard</li>
-  <li>Go to Settings &gt; Authentication</li>
-  <li>On <strong>Login methods</strong> section, Click <strong>Add new</strong> &gt; Click <strong>SAML</strong></li>
-</ol>
+<p>To make sure that Loki service is running, you can use the following command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo service loki status
+</pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/images/Zerotrust/8.addsaml.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/8.addsaml.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Also you can stop or restart the service:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>sudo service loki stop
+sudo service loki restart
+</pre></td></tr></tbody></table></code></div></div>
 
-<ol>
-  <li>In Email attribute name, fill in this 👇</li>
-</ol>
+<p>To enable Loki to start on boot, run the following command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo systemctl enable loki
+</pre></td></tr></tbody></table></code></div></div>
 
-<p>[http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress]</p>
+<h2 id="uninstall-loki"><span class="me-2">Uninstall Loki</span><a href="#uninstall-loki" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>To completely remove the Loki, stop the service and remove a systemd unit file.</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>sudo service loki stop
+sudo systemctl disable loki
+sudo rm -rf /etc/systemd/system/loki.service
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+</pre></td></tr></tbody></table></code></div></div>
 
-<p><a href="/assets/images/Zerotrust/9.optional.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/9.optional.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Delete the installation directory:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo rm -rf /opt/loki
+</pre></td></tr></tbody></table></code></div></div>
 
-<ol>
-  <li>Once done click on test, you can see this result below</li>
-</ol>
-
-<p><a href="/assets/images/Zerotrust/10.works.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/10.works.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Remove symbolic link:</p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>sudo rm -rf /usr/local/bin/loki
+</pre></td></tr></tbody></table></code></div></div>
 
 
 </div>
@@ -1462,27 +872,13 @@ Scroll down and and click on **Enable**</your-team-name></p>
     <div class="post-meta mb-3">
       <i class="far fa-folder-open fa-fw me-1"></i>
       
-        <a href="/categories/homelab/">HomeLab</a>,
-        <a href="/categories/zerotrust/">ZeroTrust</a>
+        <a href="/categories/cloudflare/">Cloudflare</a>,
+        <a href="/categories/loki/">Loki</a>,
+        <a href="/categories/ubuntu/">Ubuntu</a>
     </div>
   
 
   <!-- tags -->
-  
-    <div class="post-tags">
-      <i class="fa fa-tags fa-fw me-1"></i>
-      
-        <a
-          href="/tags/access/"
-          class="post-tag no-text-decoration"
-        >access</a>
-      
-        <a
-          href="/tags/saml/"
-          class="post-tag no-text-decoration"
-        >saml</a>
-      
-    </div>
   
 
   <div
@@ -1515,7 +911,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     
       
       <a
-        href="https://twitter.com/intent/tweet?text=Auth0%20SAML%20Cloudflare%20Zero%20trust%20-%20HomeLab%20Docs1&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FAuth0-SAML-Cloudflare-Zero-trust%2F"
+        href="https://twitter.com/intent/tweet?text=Install%20Loki%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Loki-on-Ubuntu-22.04-LTS%2F"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Twitter"
@@ -1528,7 +924,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     
       
       <a
-        href="https://www.facebook.com/sharer/sharer.php?title=Auth0%20SAML%20Cloudflare%20Zero%20trust%20-%20HomeLab%20Docs1&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FAuth0-SAML-Cloudflare-Zero-trust%2F"
+        href="https://www.facebook.com/sharer/sharer.php?title=Install%20Loki%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Loki-on-Ubuntu-22.04-LTS%2F"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Facebook"
@@ -1541,7 +937,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     
       
       <a
-        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FAuth0-SAML-Cloudflare-Zero-trust%2F&text=Auth0%20SAML%20Cloudflare%20Zero%20trust%20-%20HomeLab%20Docs1"
+        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Loki-on-Ubuntu-22.04-LTS%2F&text=Install%20Loki%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Telegram"
@@ -1893,6 +1289,11 @@ Scroll down and and click on **Enable**</your-team-name></p>
 
 
 
+  <section id="toc-wrapper" class="ps-0 pe-4 mb-5">
+    <h2 class="panel-heading ps-3 pt-2 mb-2">Contents</h2>
+    <nav id="toc"></nav>
+  </section>
+
 
             
           </aside>
@@ -1943,6 +1344,30 @@ Scroll down and and click on **Enable**</your-team-name></p>
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
 
@@ -1958,7 +1383,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       
         <article class="col">
-          <a href="/posts/Hello-HomeLab/" class="post-preview card h-100">
+          <a href="/posts/Install-Grafana-on-Ubuntu-22.04-LTS/" class="post-preview card h-100">
             <div class="card-body">
               <!--
   Date format snippet
@@ -1972,14 +1397,14 @@ Scroll down and and click on **Enable**</your-team-name></p>
   
     class="small"
   
-  data-ts="1694797200"
+  data-ts="1695315600"
   data-df="ll"
   
 >
-  Sep 16, 2023
+  Sep 22, 2023
 </time>
 
-              <h4 class="pt-0 my-2">Hello HomeLab</h4>
+              <h4 class="pt-0 my-2">Install Grafana on Ubuntu 22.04 LTS</h4>
               <div class="text-muted small">
                 <p>
                   
@@ -1988,23 +1413,108 @@ Scroll down and and click on **Enable**</your-team-name></p>
 
 
 
-                  Welcome
+                  Install Grafana on Ubuntu 22.04 LTS
 
-Hello and welcome to my homelab docs site!
+Install Grafana
 
-console.log()
-console.log()
-console.log()
+Get the latest version of Grafana
+
+Official Grafana Download Page
+
+sudo apt-get install -y adduser libfontconfig1
 
 
-name: &#39;push-remote&#39;
+Download Grafana for Linux
+...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/Cloudflare-DCV-Delegation-for-partial-zone/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
 
-on:
-    push:
-        branches:
-        - master
-        paths-ignore:
-        ...
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1695315600"
+  data-df="ll"
+  
+>
+  Sep 22, 2023
+</time>
+
+              <h4 class="pt-0 my-2">DCV Delegation for Partial Zones</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  DCV Delegation for Partial Zone
+
+DNS &amp;gt; Record (CNAME Setup)
+
+
+
+If you want to host a website name abc.jjonflare.cloud you need to create a partial Zone suffix in your authoritative DNS provider....
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/Cloudflare-Logpush/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1695315600"
+  data-df="ll"
+  
+>
+  Sep 22, 2023
+</time>
+
+              <h4 class="pt-0 my-2">Cloudflare Logpush to Grafana Loki Endpoint</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Cloudflare Logpush to Grafana Loki Endpoint
+
+Cloudflare Logpush
+
+Set up Grafana
+
+Go to Grafana and set up a free account. 
+Alternatively, you can host your own instance of Grafana Install Grafana o...
                 </p>
               </div>
             </div>
@@ -2026,21 +1536,21 @@ on:
 
   
     <a
-      href="/posts/Hello-HomeLab/"
+      href="/posts/Install-Grafana-on-Ubuntu-22.04-LTS/"
       class="btn btn-outline-primary"
       aria-label="Older"
     >
-      <p>Hello HomeLab</p>
+      <p>Install Grafana on Ubuntu 22.04 LTS</p>
     </a>
   
 
   
     <a
-      href="/posts/Cloudflare-DCV-Delegation-for-partial-zone/"
+      href="/posts/Markdown-guide/"
       class="btn btn-outline-primary"
       aria-label="Newer"
     >
-      <p>DCV Delegation for Partial Zones</p>
+      <p>Markdown guide</p>
     </a>
   
 </nav>
@@ -2490,9 +2000,16 @@ on:
 
   
 
+  
+    
+
+    
+
+  
 
 
-  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.7.1/dist/jquery.min.js,npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js,npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.9/dayjs.min.js,npm/dayjs@1.11.9/locale/en.min.js,npm/dayjs@1.11.9/plugin/relativeTime.min.js,npm/dayjs@1.11.9/plugin/localizedFormat.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.7.1/dist/jquery.min.js,npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js,npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.9/dayjs.min.js,npm/dayjs@1.11.9/locale/en.min.js,npm/dayjs@1.11.9/plugin/relativeTime.min.js,npm/dayjs@1.11.9/plugin/localizedFormat.min.js,npm/tocbot@4.21.1/dist/tocbot.min.js"></script>
 
 
 

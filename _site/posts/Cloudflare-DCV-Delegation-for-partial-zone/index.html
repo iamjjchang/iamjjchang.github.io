@@ -39,25 +39,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.2" />
-<meta property="og:title" content="Auth0 SAML Cloudflare Zero trust" />
+<meta property="og:title" content="DCV Delegation for Partial Zones" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Auth0 SAML Cloudflare Zero trust Sign up Auth0 (https://auth0.com/signup) Create User Create an Application → Applications &gt; Applications Give it a name eg. Cloudflare Access and select Single Page Web Application Addon SAML2 Web App → Under this Application &gt; Addons &gt; Select SAML2 WEB APP Select Settings Under Application Callback URL input https://.cloudflareaccess.com/cdn-cgi/access/callback \ Scroll down and and click on **Enable** &lt;your-team-name&gt; can be found under Cloudflare Zero Trust &gt; Setting &gt; General Settings In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard Download Auth0 certificate &amp; Metadata Take down of Issuer &amp; Identity Provider Login URL Configure Cloudflare Zero Trust dashboard Login to your Zero Trust Dashboard Go to Settings &gt; Authentication On Login methods section, Click Add new &gt; Click SAML In Email attribute name, fill in this 👇 [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress] Once done click on test, you can see this result below" />
-<meta property="og:description" content="Auth0 SAML Cloudflare Zero trust Sign up Auth0 (https://auth0.com/signup) Create User Create an Application → Applications &gt; Applications Give it a name eg. Cloudflare Access and select Single Page Web Application Addon SAML2 Web App → Under this Application &gt; Addons &gt; Select SAML2 WEB APP Select Settings Under Application Callback URL input https://.cloudflareaccess.com/cdn-cgi/access/callback \ Scroll down and and click on **Enable** &lt;your-team-name&gt; can be found under Cloudflare Zero Trust &gt; Setting &gt; General Settings In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard Download Auth0 certificate &amp; Metadata Take down of Issuer &amp; Identity Provider Login URL Configure Cloudflare Zero Trust dashboard Login to your Zero Trust Dashboard Go to Settings &gt; Authentication On Login methods section, Click Add new &gt; Click SAML In Email attribute name, fill in this 👇 [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress] Once done click on test, you can see this result below" />
-<link rel="canonical" href="http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/" />
-<meta property="og:url" content="http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/" />
+<meta name="description" content="DCV Delegation for Partial Zone DNS &gt; Record (CNAME Setup) If you want to host a website name abc.jjonflare.cloud you need to create a partial Zone suffix in your authoritative DNS provider. It will look like abc.jjonflare.cloud.cdn.cloudflare.net Example on Godaddy DNS Next create CNAME record in your DNS provider for DCV delegation Example on Godaddy DNS _acme-challenge.abc abc.jjonflare.cloud.c43c00fXXXXXXX.dcv.cloudflare.com. On Cloudflare Dashboard Next add the CNAME record on Cloudflare dashboard abc.jjonflare.cloud Edge Certificate Navigate to SSL/TLS &gt; Edge Certificate, order advanced certificate For this example I selected Google Trust Services as Cloudflare will stop using DigiCert as an issuing certificate authority (CA) More info here And finally the certificate is issued on Cloudflare" />
+<meta property="og:description" content="DCV Delegation for Partial Zone DNS &gt; Record (CNAME Setup) If you want to host a website name abc.jjonflare.cloud you need to create a partial Zone suffix in your authoritative DNS provider. It will look like abc.jjonflare.cloud.cdn.cloudflare.net Example on Godaddy DNS Next create CNAME record in your DNS provider for DCV delegation Example on Godaddy DNS _acme-challenge.abc abc.jjonflare.cloud.c43c00fXXXXXXX.dcv.cloudflare.com. On Cloudflare Dashboard Next add the CNAME record on Cloudflare dashboard abc.jjonflare.cloud Edge Certificate Navigate to SSL/TLS &gt; Edge Certificate, order advanced certificate For this example I selected Google Trust Services as Cloudflare will stop using DigiCert as an issuing certificate authority (CA) More info here And finally the certificate is issued on Cloudflare" />
+<link rel="canonical" href="http://localhost:4000/posts/Cloudflare-DCV-Delegation-for-partial-zone/" />
+<meta property="og:url" content="http://localhost:4000/posts/Cloudflare-DCV-Delegation-for-partial-zone/" />
 <meta property="og:site_name" content="HomeLab Docs1" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-22T01:00:00+08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Auth0 SAML Cloudflare Zero trust" />
+<meta property="twitter:title" content="DCV Delegation for Partial Zones" />
 <meta name="twitter:site" content="@twitter_username" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-09-22T20:18:35+08:00","datePublished":"2023-09-22T01:00:00+08:00","description":"Auth0 SAML Cloudflare Zero trust Sign up Auth0 (https://auth0.com/signup) Create User Create an Application → Applications &gt; Applications Give it a name eg. Cloudflare Access and select Single Page Web Application Addon SAML2 Web App → Under this Application &gt; Addons &gt; Select SAML2 WEB APP Select Settings Under Application Callback URL input https://.cloudflareaccess.com/cdn-cgi/access/callback \\ Scroll down and and click on **Enable** &lt;your-team-name&gt; can be found under Cloudflare Zero Trust &gt; Setting &gt; General Settings In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard Download Auth0 certificate &amp; Metadata Take down of Issuer &amp; Identity Provider Login URL Configure Cloudflare Zero Trust dashboard Login to your Zero Trust Dashboard Go to Settings &gt; Authentication On Login methods section, Click Add new &gt; Click SAML In Email attribute name, fill in this 👇 [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress] Once done click on test, you can see this result below","headline":"Auth0 SAML Cloudflare Zero trust","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/"},"url":"http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-09-22T20:59:50+08:00","datePublished":"2023-09-22T01:00:00+08:00","description":"DCV Delegation for Partial Zone DNS &gt; Record (CNAME Setup) If you want to host a website name abc.jjonflare.cloud you need to create a partial Zone suffix in your authoritative DNS provider. It will look like abc.jjonflare.cloud.cdn.cloudflare.net Example on Godaddy DNS Next create CNAME record in your DNS provider for DCV delegation Example on Godaddy DNS _acme-challenge.abc abc.jjonflare.cloud.c43c00fXXXXXXX.dcv.cloudflare.com. On Cloudflare Dashboard Next add the CNAME record on Cloudflare dashboard abc.jjonflare.cloud Edge Certificate Navigate to SSL/TLS &gt; Edge Certificate, order advanced certificate For this example I selected Google Trust Services as Cloudflare will stop using DigiCert as an issuing certificate authority (CA) More info here And finally the certificate is issued on Cloudflare","headline":"DCV Delegation for Partial Zones","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Cloudflare-DCV-Delegation-for-partial-zone/"},"url":"http://localhost:4000/posts/Cloudflare-DCV-Delegation-for-partial-zone/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>Auth0 SAML Cloudflare Zero trust | HomeLab Docs1
+  <title>DCV Delegation for Partial Zones | HomeLab Docs1
   </title>
 
   <!--
@@ -468,7 +468,7 @@
         
           
             
-              <span>Auth0 SAML Cloudflare Zero trust</span>
+              <span>DCV Delegation for Partial Zones</span>
             
 
           
@@ -1099,142 +1099,6 @@
     
 
   
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
 
   
 
@@ -1252,6 +1116,29 @@
 
   
   
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
 
   
 
@@ -1279,7 +1166,7 @@
 
 
 <header>
-  <h1 data-toc-skip>Auth0 SAML Cloudflare Zero trust</h1>
+  <h1 data-toc-skip>DCV Delegation for Partial Zones</h1>
 
   <div class="post-meta text-muted">
     <!-- published date -->
@@ -1320,7 +1207,7 @@
 
 <time
   
-  data-ts="1695385115"
+  data-ts="1695387590"
   data-df="ll"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -1369,7 +1256,7 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="149 words"
+  title="112 words"
 >
   <em>1 min</em> read</span>
 
@@ -1380,79 +1267,46 @@
 </header>
 
 <div class="content">
-  <h1 id="auth0-saml-cloudflare-zero-trust">Auth0 SAML Cloudflare Zero trust</h1>
+  <h1 id="dcv-delegation-for-partial-zone">DCV Delegation for Partial Zone</h1>
 
-<ol>
-  <li>Sign up Auth0 (https://auth0.com/signup)</li>
-</ol>
+<h2 id="dns--record-cname-setup"><span class="me-2">DNS &gt; Record (CNAME Setup)</span><a href="#dns--record-cname-setup" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p><a href="/assets/images/Zerotrust/1.usermanagement.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/1.usermanagement.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p><a href="/assets/images/CNameDCV/1.CNAMEDNS.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/1.CNAMEDNS.png" alt="" class="lazyload" data-proofer-ignore></a></p>
 
-<ol>
-  <li>Create User</li>
-</ol>
+<p>If you want to host a website name <code class="language-plaintext highlighter-rouge">abc.jjonflare.cloud</code> you need to create a partial Zone suffix in your authoritative DNS provider.</p>
 
-<p><a href="/assets/images/Zerotrust/2.createuser.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/2.createuser.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p><a href="/assets/images/CNameDCV/2.partialdns.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/2.partialdns.png" alt="" class="lazyload" data-proofer-ignore></a></p>
 
-<ol>
-  <li>Create an Application → Applications &gt; Applications</li>
-</ol>
+<p>It will look like <code class="language-plaintext highlighter-rouge">abc.jjonflare.cloud.cdn.cloudflare.net</code></p>
 
-<p><a href="/assets/images/Zerotrust/3.application.jpg" class="popup img-link "><img data-src="/assets/images/Zerotrust/3.application.jpg" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p><strong>Example on Godaddy DNS</strong></p>
 
-<ol>
-  <li>Give it a name eg. Cloudflare Access and select <strong>Single Page Web Application</strong></li>
-</ol>
+<p><a href="/assets/images/CNameDCV/3.GodaddyDNS.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/3.GodaddyDNS.png" alt="" class="lazyload" data-proofer-ignore></a></p>
 
-<p><a href="/assets/images/Zerotrust/4.cloudflareaccess.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/4.cloudflareaccess.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Next create CNAME record in your DNS provider for DCV delegation</p>
 
-<p>Addon SAML2 Web App → Under this Application &gt; Addons &gt; <strong>Select SAML2 WEB APP</strong></p>
+<p><strong>Example on Godaddy DNS</strong></p>
 
-<p><a href="/assets/images/Zerotrust/5.SAML2.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/5.SAML2.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>_acme-challenge.abc abc.jjonflare.cloud.c43c00fXXXXXXX.dcv.cloudflare.com.</p>
 
-<p>Select <strong>Settings</strong> <br />
-Under <strong>Application Callback URL</strong> input  https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback \ 
-Scroll down and and click on **Enable**</your-team-name></p>
+<p><a href="/assets/images/CNameDCV/4.DCV.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/4.DCV.png" alt="" class="lazyload" data-proofer-ignore></a></p>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;your-team-name&gt;</code> can be found under <strong>Cloudflare Zero Trust &gt; Setting &gt; General Settings</strong></p>
+<p><strong>On Cloudflare Dashboard</strong></p>
 
-<p><a href="/assets/images/Zerotrust/6.callback.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/6.callback.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p>Next add the CNAME record on Cloudflare dashboard <code class="language-plaintext highlighter-rouge">abc.jjonflare.cloud</code></p>
 
-<ol>
-  <li>In this Addon screen, you can get SAML Configuration Parameters for Cloudflare ZT dashboard 
-    <ol>
-      <li>Download Auth0 certificate &amp; Metadata</li>
-      <li>Take down of Issuer &amp; Identity Provider Login URL</li>
-    </ol>
-  </li>
-</ol>
+<p><a href="/assets/images/CNameDCV/5.CloudflareDNS.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/5.CloudflareDNS.png" alt="" class="lazyload" data-proofer-ignore></a></p>
 
-<p><a href="/assets/images/Zerotrust/7.addon.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/7.addon.png" alt="" class="lazyload" data-proofer-ignore></a></p>
+<p><strong>Edge Certificate</strong></p>
 
-<h1 id="configure-cloudflare-zero-trust-dashboard">Configure Cloudflare Zero Trust dashboard</h1>
+<p>Navigate to SSL/TLS &gt; Edge Certificate, order advanced certificate
+For this example I selected <strong>Google Trust Services</strong> as Cloudflare will stop using <strong>DigiCert</strong> as an issuing certificate authority (CA) <a href="https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-update/advanced-certificates/">More info here</a></p>
 
-<ol>
-  <li>Login to your Zero Trust  Dashboard</li>
-  <li>Go to Settings &gt; Authentication</li>
-  <li>On <strong>Login methods</strong> section, Click <strong>Add new</strong> &gt; Click <strong>SAML</strong></li>
-</ol>
+<p><a href="/assets/images/CNameDCV/6.OrderAdvcert.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/6.OrderAdvcert.png" alt="" class="lazyload" data-proofer-ignore></a>
+<a href="/assets/images/CNameDCV/7.googletrust.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/7.googletrust.png" alt="" class="lazyload" data-proofer-ignore></a></p>
 
-<p><a href="/assets/images/Zerotrust/8.addsaml.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/8.addsaml.png" alt="" class="lazyload" data-proofer-ignore></a></p>
-
-<ol>
-  <li>In Email attribute name, fill in this 👇</li>
-</ol>
-
-<p>[http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress]</p>
-
-<p><a href="/assets/images/Zerotrust/9.optional.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/9.optional.png" alt="" class="lazyload" data-proofer-ignore></a></p>
-
-<ol>
-  <li>Once done click on test, you can see this result below</li>
-</ol>
-
-<p><a href="/assets/images/Zerotrust/10.works.png" class="popup img-link "><img data-src="/assets/images/Zerotrust/10.works.png" alt="" class="lazyload" data-proofer-ignore></a></p>
-
+<p>And finally the certificate is issued on Cloudflare
+<a href="/assets/images/CNameDCV/8.Certissued.png" class="popup img-link "><img data-src="/assets/images/CNameDCV/8.Certissued.png" alt="" class="lazyload" data-proofer-ignore></a></p>
 
 </div>
 
@@ -1462,8 +1316,8 @@ Scroll down and and click on **Enable**</your-team-name></p>
     <div class="post-meta mb-3">
       <i class="far fa-folder-open fa-fw me-1"></i>
       
-        <a href="/categories/homelab/">HomeLab</a>,
-        <a href="/categories/zerotrust/">ZeroTrust</a>
+        <a href="/categories/cloudflare/">Cloudflare</a>,
+        <a href="/categories/dcv/">DCV</a>
     </div>
   
 
@@ -1473,14 +1327,14 @@ Scroll down and and click on **Enable**</your-team-name></p>
       <i class="fa fa-tags fa-fw me-1"></i>
       
         <a
-          href="/tags/access/"
+          href="/tags/cname/"
           class="post-tag no-text-decoration"
-        >access</a>
+        >cname</a>
       
         <a
-          href="/tags/saml/"
+          href="/tags/dns/"
           class="post-tag no-text-decoration"
-        >saml</a>
+        >dns</a>
       
     </div>
   
@@ -1515,7 +1369,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     
       
       <a
-        href="https://twitter.com/intent/tweet?text=Auth0%20SAML%20Cloudflare%20Zero%20trust%20-%20HomeLab%20Docs1&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FAuth0-SAML-Cloudflare-Zero-trust%2F"
+        href="https://twitter.com/intent/tweet?text=DCV%20Delegation%20for%20Partial%20Zones%20-%20HomeLab%20Docs1&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FCloudflare-DCV-Delegation-for-partial-zone%2F"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Twitter"
@@ -1528,7 +1382,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     
       
       <a
-        href="https://www.facebook.com/sharer/sharer.php?title=Auth0%20SAML%20Cloudflare%20Zero%20trust%20-%20HomeLab%20Docs1&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FAuth0-SAML-Cloudflare-Zero-trust%2F"
+        href="https://www.facebook.com/sharer/sharer.php?title=DCV%20Delegation%20for%20Partial%20Zones%20-%20HomeLab%20Docs1&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FCloudflare-DCV-Delegation-for-partial-zone%2F"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Facebook"
@@ -1541,7 +1395,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     
       
       <a
-        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FAuth0-SAML-Cloudflare-Zero-trust%2F&text=Auth0%20SAML%20Cloudflare%20Zero%20trust%20-%20HomeLab%20Docs1"
+        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FCloudflare-DCV-Delegation-for-partial-zone%2F&text=DCV%20Delegation%20for%20Partial%20Zones%20-%20HomeLab%20Docs1"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Telegram"
@@ -1893,6 +1747,11 @@ Scroll down and and click on **Enable**</your-team-name></p>
 
 
 
+  <section id="toc-wrapper" class="ps-0 pe-4 mb-5">
+    <h2 class="panel-heading ps-3 pt-2 mb-2">Contents</h2>
+    <nav id="toc"></nav>
+  </section>
+
 
             
           </aside>
@@ -1930,19 +1789,43 @@ Scroll down and and click on **Enable**</your-team-name></p>
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 
 
@@ -1958,7 +1841,7 @@ Scroll down and and click on **Enable**</your-team-name></p>
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       
         <article class="col">
-          <a href="/posts/Hello-HomeLab/" class="post-preview card h-100">
+          <a href="/posts/Cloudflare-Logpush/" class="post-preview card h-100">
             <div class="card-body">
               <!--
   Date format snippet
@@ -1972,14 +1855,14 @@ Scroll down and and click on **Enable**</your-team-name></p>
   
     class="small"
   
-  data-ts="1694797200"
+  data-ts="1695315600"
   data-df="ll"
   
 >
-  Sep 16, 2023
+  Sep 22, 2023
 </time>
 
-              <h4 class="pt-0 my-2">Hello HomeLab</h4>
+              <h4 class="pt-0 my-2">Cloudflare Logpush to Grafana Loki Endpoint</h4>
               <div class="text-muted small">
                 <p>
                   
@@ -1988,23 +1871,109 @@ Scroll down and and click on **Enable**</your-team-name></p>
 
 
 
-                  Welcome
+                  Cloudflare Logpush to Grafana Loki Endpoint
 
-Hello and welcome to my homelab docs site!
+Cloudflare Logpush
 
-console.log()
-console.log()
-console.log()
+Set up Grafana
+
+Go to Grafana and set up a free account. 
+Alternatively, you can host your own instance of Grafana Install Grafana o...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/Install-Grafana-on-Ubuntu-22.04-LTS/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
 
 
-name: &#39;push-remote&#39;
 
-on:
-    push:
-        branches:
-        - master
-        paths-ignore:
-        ...
+
+<time
+  
+    class="small"
+  
+  data-ts="1695315600"
+  data-df="ll"
+  
+>
+  Sep 22, 2023
+</time>
+
+              <h4 class="pt-0 my-2">Install Grafana on Ubuntu 22.04 LTS</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Install Grafana on Ubuntu 22.04 LTS
+
+Install Grafana
+
+Get the latest version of Grafana
+
+Official Grafana Download Page
+
+1
+sudo apt-get install -y adduser libfontconfig1
+
+
+Download Grafana for Linu...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/posts/Install-Loki-on-Ubuntu-22.04-LTS/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1695315600"
+  data-df="ll"
+  
+>
+  Sep 22, 2023
+</time>
+
+              <h4 class="pt-0 my-2">Install Loki on Ubuntu 22.04 LTS</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Install Loki on Ubuntu 22.04 LTS
+
+Install Loki
+
+Get the latest version tag of Loki from GitHub.
+
+1
+LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;ta...
                 </p>
               </div>
             </div>
@@ -2026,21 +1995,21 @@ on:
 
   
     <a
-      href="/posts/Hello-HomeLab/"
+      href="/posts/Auth0-SAML-Cloudflare-Zero-trust/"
       class="btn btn-outline-primary"
       aria-label="Older"
     >
-      <p>Hello HomeLab</p>
+      <p>Auth0 SAML Cloudflare Zero trust</p>
     </a>
   
 
   
     <a
-      href="/posts/Cloudflare-DCV-Delegation-for-partial-zone/"
+      href="/posts/Cloudflare-Logpush/"
       class="btn btn-outline-primary"
       aria-label="Newer"
     >
-      <p>DCV Delegation for Partial Zones</p>
+      <p>Cloudflare Logpush to Grafana Loki Endpoint</p>
     </a>
   
 </nav>
@@ -2490,9 +2459,16 @@ on:
 
   
 
+  
+    
+
+    
+
+  
 
 
-  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.7.1/dist/jquery.min.js,npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js,npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.9/dayjs.min.js,npm/dayjs@1.11.9/locale/en.min.js,npm/dayjs@1.11.9/plugin/relativeTime.min.js,npm/dayjs@1.11.9/plugin/localizedFormat.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.7.1/dist/jquery.min.js,npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js,npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.9/dayjs.min.js,npm/dayjs@1.11.9/locale/en.min.js,npm/dayjs@1.11.9/plugin/relativeTime.min.js,npm/dayjs@1.11.9/plugin/localizedFormat.min.js,npm/tocbot@4.21.1/dist/tocbot.min.js"></script>
 
 
 

@@ -1,11 +1,96 @@
 [
   
   {
-    "title": "Auth0 Saml Cloudflare Zero Trust",
-    "url": "/posts/Auth0-SAML-Cloudflare-Zero-trust/",
-    "categories": "",
+    "title": "Markdown guide",
+    "url": "/posts/Markdown-guide/",
+    "categories": "Markdown, guide",
     "tags": "",
-    "date": "2023-09-21 00:00:00 +0800",
+    "date": "2023-09-22 01:00:00 +0800",
+    
+
+
+
+
+
+    
+    "snippet": "Markdown guideThe Last Markdown Editor, Ever            [![N      Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)      Dillinger is a cloud-enabled, mobile-r...",
+    "content": "Markdown guideThe Last Markdown Editor, Ever            [![N      Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)      Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,AngularJS-powered HTML5 Markdown editor.  Type some Markdown on the left  See HTML in the right  ✨Magic ✨Features  Import a HTML file and watch it magically convert to Markdown  Drag and drop images (requires your Dropbox account be linked)  Import and save files from GitHub, Dropbox, Google Drive and One Drive  Drag and drop markdown and HTML files into Dillinger  Export documents as Markdown, HTML and PDFMarkdown is a lightweight markup language based on the formatting conventionsthat people naturally use in email.As John Gruber writes on the Markdown site  The overriding design goal for Markdown’sformatting syntax is to make it as readableas possible. The idea is that aMarkdown-formatted document should bepublishable as-is, as plain text, withoutlooking like it’s been marked up with tagsor formatting instructions.This text you see here is *actually- written in Markdown! To get a feelfor Markdown’s syntax, type some text into the left window andwatch the results in the right.TechDillinger uses a number of open source projects to work properly:  AngularJS - HTML enhanced for web apps!  Ace Editor - awesome web-based text editor  markdown-it - Markdown parser done right. Fast and easy to extend.  Twitter Bootstrap - great UI boilerplate for modern web apps  node.js - evented I/O for the backend  Express - fast node.js network app framework @tjholowaychuk  Gulp - the streaming build system  Breakdance - HTMLto Markdown converter  jQuery - duhAnd of course Dillinger itself is open source with a public repository on GitHub.InstallationDillinger requires Node.js v10+ to run.Install the dependencies and devDependencies and start the server.cd dillingernpm inode appFor production environments…npm install --productionNODE_ENV=production node appPluginsDillinger is currently extended with the following plugins.Instructions on how to use them in your own application are linked below.            Plugin      README                  Dropbox      plugins/dropbox/README.md              GitHub      plugins/github/README.md              Google Drive      plugins/googledrive/README.md              OneDrive      plugins/onedrive/README.md              Medium      plugins/medium/README.md              Google Analytics      plugins/googleanalytics/README.md      DevelopmentWant to contribute? Great!Dillinger uses Gulp + Webpack for fast developing.Make a change in your file and instantaneously see your updates!Open your favorite Terminal and run these commands.First Tab:node appSecond Tab:gulp watch(optional) Third:karma testBuilding for sourceFor production release:gulp build --prodGenerating pre-built zip archives for distribution:gulp build dist --prodDockerDillinger is very easy to install and deploy in a Docker container.By default, the Docker will expose port 8080, so change this within theDockerfile if necessary. When ready, simply use the Dockerfile tobuild the image.cd dillingerdocker build -t &lt;youruser&gt;/dillinger:${package.json.version} .This will create the dillinger image and pull in the necessary dependencies.Be sure to swap out ${package.json.version} with the actualversion of Dillinger.Once done, run the Docker image and map the port to whatever you wish onyour host. In this example, we simply map port 8000 of the host toport 8080 of the Docker (or whatever port was exposed in the Dockerfile):docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=dillinger &lt;youruser&gt;/dillinger:${package.json.version}  Note: --capt-add=SYS-ADMIN is required for PDF rendering.Verify the deployment by navigating to your server address inyour preferred browser.127.0.0.1:8000LicenseMITFree Software, Hell Yeah!"
+  },
+  
+  {
+    "title": "Install Loki on Ubuntu 22.04 LTS",
+    "url": "/posts/Install-Loki-on-Ubuntu-22.04-LTS/",
+    "categories": "Cloudflare, Loki, Ubuntu",
+    "tags": "",
+    "date": "2023-09-22 01:00:00 +0800",
+    
+
+
+
+
+
+    
+    "snippet": "Install Loki on Ubuntu 22.04 LTSInstall LokiGet the latest version tag of Loki from GitHub.LOKI_VERSION=$(curl -s \"https://api.github.com/repos/grafana/loki/releases/latest\" | grep -Po '\"tag_name\":...",
+    "content": "Install Loki on Ubuntu 22.04 LTSInstall LokiGet the latest version tag of Loki from GitHub.LOKI_VERSION=$(curl -s \"https://api.github.com/repos/grafana/loki/releases/latest\" | grep -Po '\"tag_name\": \"v\\K[0-9.]+')Create a new directory to store Loki binary and configuration file.sudo mkdir /opt/lokiDownload archive from releases page of the Loki repository.sudo wget -qO /opt/loki/loki.gz \"https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip\"Extract binary file from archive:sudo gunzip /opt/loki/loki.gzSet execute permission for file:sudo chmod a+x /opt/loki/lokiIn /usr/local/bin directory we can create a symbolic link to the loki command:sudo ln -s /opt/loki/loki /usr/local/bin/lokiNow loki command is available for all users as a system-wide command.Download configuration file for Loki:sudo wget -qO /opt/loki/loki-local-config.yaml \"https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml\"To verify installation, we can check Loki version:loki -versionRun Loki as a serviceWe can configure systemd for running Loki as a service. Create a systemd unit file:sudo nano /etc/systemd/system/loki.serviceAdd the following content to the file:[Unit]Description=Loki log aggregation systemAfter=network.target[Service]ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yamlRestart=always[Install]WantedBy=multi-user.targetStart Loki service:sudo service loki startTo make sure that Loki service is running, you can use the following command:sudo service loki statusAlso you can stop or restart the service:sudo service loki stopsudo service loki restartTo enable Loki to start on boot, run the following command:sudo systemctl enable lokiUninstall LokiTo completely remove the Loki, stop the service and remove a systemd unit file.sudo service loki stopsudo systemctl disable lokisudo rm -rf /etc/systemd/system/loki.servicesudo systemctl daemon-reloadsudo systemctl reset-failedDelete the installation directory:sudo rm -rf /opt/lokiRemove symbolic link:sudo rm -rf /usr/local/bin/loki"
+  },
+  
+  {
+    "title": "Install Grafana on Ubuntu 22.04 LTS",
+    "url": "/posts/Install-Grafana-on-Ubuntu-22.04-LTS/",
+    "categories": "Cloudflare, Grafana, Ubuntu",
+    "tags": "",
+    "date": "2023-09-22 01:00:00 +0800",
+    
+
+
+
+
+
+    
+    "snippet": "Install Grafana on Ubuntu 22.04 LTSInstall GrafanaGet the latest version of GrafanaOfficial Grafana Download Pagesudo apt-get install -y adduser libfontconfig1Download Grafana for Linuxwget https:/...",
+    "content": "Install Grafana on Ubuntu 22.04 LTSInstall GrafanaGet the latest version of GrafanaOfficial Grafana Download Pagesudo apt-get install -y adduser libfontconfig1Download Grafana for Linuxwget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.4.3_amd64.debInstall Grafanasudo dpkg -i grafana-enterprise_9.4.3_amd64.debStart Grafanasystemctl start grafana-serverCheck status of Grafanasystemctl status grafana-serverAdditional Plugins to installgrafana-cli plugins install grafana-piechart-panelgrafana-cli plugins install fifemon-graphql-datasourcegrafana-cli plugins install grafana-worldmap-panelUninstall GrafanaThe parameter remove will remove installation files while keeping configuration data.sudo apt-get remove grafana Uninstall grafana including dependent package If you would like to remove grafana and it’s dependent packages which are no longer needed from Ubuntusudo apt-get remove --auto-remove grafana Purging grafana We instruct apt-get to remove configuration filessudo apt-get purge grafana If you use purge options along with auto remove, will be removed everything regarding the package, It’s really useful when you want to reinstall again.sudo apt-get purge --auto-remove grafana "
+  },
+  
+  {
+    "title": "Cloudflare Logpush to Grafana Loki Endpoint",
+    "url": "/posts/Cloudflare-Logpush/",
+    "categories": "Cloudflare, Logpush",
+    "tags": "log",
+    "date": "2023-09-22 01:00:00 +0800",
+    
+
+
+
+
+
+    
+    "snippet": "Cloudflare Logpush to Grafana Loki EndpointCloudflare LogpushSet up GrafanaGo to Grafana and set up a free account. Alternatively, you can host your own instance of Grafana Install Grafana on Ubunt...",
+    "content": "Cloudflare Logpush to Grafana Loki EndpointCloudflare LogpushSet up GrafanaGo to Grafana and set up a free account. Alternatively, you can host your own instance of Grafana Install Grafana on UbuntuCreate a WorkerCreate a new Worker with Cloudflare Wranglerwrangler generate YOUR_WORKER_NAMEIndex.jsEdit the index.js file:# + Change job label { \"job\": \"cloudflare-logpush-http-requests\" } in src/index.js as neededexport default {    async fetch(request, env, ctx) {        const contentEncoding = request.headers.get('content-encoding')        const buf = await request.arrayBuffer();        const enc = new TextDecoder(\"utf-8\");        if (contentEncoding === 'gzip') {            // Decompress gzipped logpush body to json            const blob = new Blob([buf])            const ds = new DecompressionStream('gzip');            const decompressedStream = blob.stream().pipeThrough(ds);            const buffer = await new Response(decompressedStream).arrayBuffer();            const decompressed = new Uint8Array(buffer)            const ndjson = enc.decode(decompressed)            const json = ndjson.split('\\n')            const lokiFormat = {                \"streams\": [{                    \"stream\": {                        \"job\": \"cloudflare-logpush-httprequests\"                    },                    \"values\": []                }]            }            json.forEach(element =&gt; {                const date = element.EdgeStartTimestamp || new Date().getTime() * 1000000                lokiFormat.streams[0].values.push([date.toString(), element])            })            // Post data to Grafana Loki            return await fetch(`https://${env.LOKI_HOST}/loki/api/v1/push`, {                method: \"POST\",                body: JSON.stringify(lokiFormat),                headers: {                    \"Content-Type\": \"application/json\",                    Authorization: 'Basic ' + btoa(`${env.LOKI_USER}:${env.LOKI_API_KEY}`)                }            });        } else {            // Initial pre-flight Logpush Request to confirm the integration check            const compressed = new Uint8Array(buf);            console.log(enc.decode(compressed).trim()) //{\"content\":\"test\",\"filename\":\"test.txt\"}')            const lokiFormat = {                \"streams\": [{                    \"stream\": {                        \"job\": \"cloudflare-logpush-httprequests\"                    },                    \"values\": []                }]            }            const unixnano = new Date().getTime() * 1000000            const json = '{\"content\":\"test\",\"filename\":\"test.txt\"}';            lokiFormat.streams[0].values.push([unixnano.toString(), json])            return await fetch(`https://${env.LOKI_HOST}/loki/api/v1/push`, {                method: \"POST\",                body: JSON.stringify(lokiFormat),                headers: {                    \"Content-Type\": \"application/json\",                    Authorization: 'Basic ' + btoa(`${env.LOKI_USER}:${env.LOKI_API_KEY}`)                }            });        }    },};Wrangler secretwrangler secret put LOKI_USER # 3XXXXXwrangler secret put LOKI_API_KEY # eyJxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==wrangler secret put LOKI_HOST # logs-prod-0xxxxx.grafana.netUpload the Workerwrangler publishLogpush \\Get Log Fieldscurl -s \\-H \"X-Auth-Email: $EMAIL\" \\-H \"X-Auth-Key: $APIKEY\" \\\"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/datasets/http_requests/fields\" | jq -r '.result |keys | join(\",\")')You should see a comma separated list of available fields you can send to your destinationBotDetectionIDs,BotScore,BotScoreSrc,BotTags,CacheCacheStatus,CacheReserveUsed,CacheResponseBytes,CacheResponseStatus,CacheTieredFill,ClientASN,ClientCountry,ClientDeviceType,ClientIP,ClientIPClass,ClientMTLSAuthCertFingerprint,ClientMTLSAuthStatus,ClientRegionCode,ClientRequestBytes,ClientRequestHost,ClientRequestMethod,ClientRequestPath,ClientRequestProtocol,ClientRequestReferer,ClientRequestScheme,ClientRequestSource,ClientRequestURI,ClientRequestUserAgent,ClientSSLCipher,ClientSSLProtocol,ClientSrcPort,ClientTCPRTTMs,ClientXRequestedWith,ContentScanObjResults,ContentScanObjTypes,Cookies,EdgeCFConnectingO2O,EdgeColoCode,EdgeColoID,EdgeEndTimestamp,EdgePathingOp,EdgePathingSrc,EdgePathingStatus,EdgeRateLimitAction,EdgeRateLimitID,EdgeRequestHost,EdgeResponseBodyBytes,EdgeResponseBytes,EdgeResponseCompressionRatio,EdgeResponseContentType,EdgeResponseStatus,EdgeServerIP,EdgeStartTimestamp,EdgeTimeToFirstByteMs,FirewallMatchesActions,FirewallMatchesRuleIDs,FirewallMatchesSources,JA3Hash,OriginDNSResponseTimeMs,OriginIP,OriginRequestHeaderSendDurationMs,OriginResponseBytes,OriginResponseDurationMs,OriginResponseHTTPExpires,OriginResponseHTTPLastModified,OriginResponseHeaderReceiveDurationMs,OriginResponseStatus,OriginResponseTime,OriginSSLProtocol,OriginTCPHandshakeDurationMs,OriginTLSHandshakeDurationMs,ParentRayID,RayID,RequestHeaders,ResponseHeaders,SecurityLevel,SmartRouteColoID,UpperTierColoID,WAFAction,WAFAttackScore,WAFFlags,WAFMatchedVar,WAFProfile,WAFRCEAttackScore,WAFRuleID,WAFRuleMessage,WAFSQLiAttackScore,WAFXSSAttackScore,WorkerCPUTime,WorkerStatus,WorkerSubrequest,WorkerSubrequestCount,WorkerWallTimeUs,ZoneNameCreate Logpush Job \\Variablesexport ZONE_ID=yourzoneid.comexport EMAIL=your@email.comexport APIKEY=yourglobalAPIkeyexport FIELD=BotDetectionIDs,BotScore,BotScoreSrc,BotTags,CacheCacheStatus,CacheReserveUsed,.....,.......,......curl -s -X POST \"https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs\" \\-H \"X-Auth-Email: $EMAIL\" \\-H \"X-Auth-Key: $APIKEY\" \\-d '{\"name\": \"grafana-loki\",\"logpull_options\": \"fields='$FIELDS'\",\"destination_conf\": \"https://loki_logpush.myworker.workers.dev?host:example.com,dataset:http_requests\",\"max_upload_bytes\": 5000000,\"max_upload_records\": 1000,\"dataset\": \"http_requests\",\"enabled\": true}' Test explorer on Grafana Loki{job=\"&lt;YOUR_LOKI_JOB_NAME&gt;\"} | json | __error__ = \"\"TroubleshootingTest Grafana Loki endpointMake you can first query your Grafana Loki endpointexport LOKI_USER=3XXXXXexport LOKI_API_KEY=eyJxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==export LOKI_HOST=logs-prod-0xxxxx.grafana.netcurl -v -H \"Content-Type: application/json\" -XPOST -s \\\"https://$LOKI_USER:$LOKI_API_KEY@$LOKI_HOST/loki/api/v1/push\" --data-raw \\'{\"streams\": [{ \"stream\": { \"foo\": \"bar2\" }, \"values\": [ [ \"1677514484485207000\", \"fizzbuzz\" ] ] }]}'Test worker endpointUse command wrangler tail to view live logs or login to dashboard and view worker log streamcurl \"https://loki_logpush.myworker.workers.dev\" -X POST \\--data-raw '{\"content\":\"test\",\"filename\":\"test.txt\"}' \\-H \"Content-Type: application/json\"Check if Log Retention is enabled:curl -s -H \"X-Auth-Email:&lt;YOUR_EMAIL&gt;\" -H \"X-Auth-Key:&lt;GLOBAL_API_KEY&gt;\" GET \"https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/logs/control/retention/flag\" | jq .Enable Log Retentioncurl -s -H \"X-Auth-Email:&lt;YOUR_EMAIL&gt;\" -H \"X-Auth-Key:&lt;GLOBAL_API_KEY&gt;\" POST \"https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/logs/control/retention/flag\" -d'{\"flag\":true}' | jq ."
+  },
+  
+  {
+    "title": "DCV Delegation for Partial Zones",
+    "url": "/posts/Cloudflare-DCV-Delegation-for-partial-zone/",
+    "categories": "Cloudflare, DCV",
+    "tags": "cname, dns",
+    "date": "2023-09-22 01:00:00 +0800",
+    
+
+
+
+
+
+    
+    "snippet": "DCV Delegation for Partial ZoneDNS &gt; Record (CNAME Setup)If you want to host a website name abc.jjonflare.cloud you need to create a partial Zone suffix in your authoritative DNS provider.It wil...",
+    "content": "DCV Delegation for Partial ZoneDNS &gt; Record (CNAME Setup)If you want to host a website name abc.jjonflare.cloud you need to create a partial Zone suffix in your authoritative DNS provider.It will look like abc.jjonflare.cloud.cdn.cloudflare.netExample on Godaddy DNSNext create CNAME record in your DNS provider for DCV delegationExample on Godaddy DNS_acme-challenge.abc abc.jjonflare.cloud.c43c00fXXXXXXX.dcv.cloudflare.com.On Cloudflare DashboardNext add the CNAME record on Cloudflare dashboard abc.jjonflare.cloudEdge CertificateNavigate to SSL/TLS &gt; Edge Certificate, order advanced certificateFor this example I selected Google Trust Services as Cloudflare will stop using DigiCert as an issuing certificate authority (CA) More info hereAnd finally the certificate is issued on Cloudflare"
+  },
+  
+  {
+    "title": "Auth0 SAML Cloudflare Zero trust",
+    "url": "/posts/Auth0-SAML-Cloudflare-Zero-trust/",
+    "categories": "HomeLab, ZeroTrust",
+    "tags": "access, saml",
+    "date": "2023-09-22 01:00:00 +0800",
     
 
 
@@ -21,23 +106,6 @@
     "title": "Hello HomeLab",
     "url": "/posts/Hello-HomeLab/",
     "categories": "HomeLab, software",
-    "tags": "servers, dell",
-    "date": "2023-09-16 01:00:00 +0800",
-    
-
-
-
-
-
-    
-    "snippet": "WelcomeHello and welcome to my homelab docs site!console.log()console.log()console.log()name: 'push-remote'on:    push:        branches:        - master        paths-ignore:        - .gitignore    ...",
-    "content": "WelcomeHello and welcome to my homelab docs site!console.log()console.log()console.log()name: 'push-remote'on:    push:        branches:        - master        paths-ignore:        - .gitignore        - READ.md        - LICENSEsudo apt update &amp;&amp; sudo apt updatepwdpwdPhotos"
-  },
-  
-  {
-    "title": "Testing",
-    "url": "/posts/Web-Scraping/",
-    "categories": "Home, software",
     "tags": "servers, dell",
     "date": "2023-09-16 01:00:00 +0800",
     

@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>HomeLab Docs1</title>
   <subtitle>A minimal, responsive and feature-rich Jekyll theme for technical writing.</subtitle>
-  <updated>2023-09-22T20:16:47+08:00</updated>
+  <updated>2023-09-22T21:19:01+08:00</updated>
   <author>
     <name>your_full_name</name>
     <uri>http://localhost:4000/</uri>
@@ -20,19 +20,23 @@
 
   
   <entry>
-    <title>Auth0 Saml Cloudflare Zero Trust</title>
-    <link href="http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/" rel="alternate" type="text/html" title="Auth0 Saml Cloudflare Zero Trust" />
-    <published>2023-09-21T00:00:00+08:00</published>
+    <title>Markdown guide</title>
+    <link href="http://localhost:4000/posts/Markdown-guide/" rel="alternate" type="text/html" title="Markdown guide" />
+    <published>2023-09-22T01:00:00+08:00</published>
   
-    <updated>2023-09-22T20:05:52+08:00</updated>
+    <updated>2023-09-22T21:06:04+08:00</updated>
   
-    <id>http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/</id>
-    <content src="http://localhost:4000/posts/Auth0-SAML-Cloudflare-Zero-trust/" />
+    <id>http://localhost:4000/posts/Markdown-guide/</id>
+    <content src="http://localhost:4000/posts/Markdown-guide/" />
     <author>
       <name>your_full_name</name>
     </author>
 
   
+    
+    <category term="Markdown" />
+    
+    <category term="guide" />
     
   
 
@@ -44,38 +48,33 @@
 
 
 
-      Auth0 SAML Cloudflare Zero trust
+      Markdown guide
+The Last Markdown Editor, Ever
 
 
-  Sign up Auth0 (https://auth0.com/signup)
-
-
-
-
-
-  Create User
-
-
-
-
-
-  Create an Application → Applications &amp;gt; Applications
+  
+    
+      [![N
+      Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+    
+  
 
 
 
 
-
-  Give it a name eg. Cloudflare Access and select Single Page Web Application
-
-
+Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
+AngularJS-powered HTML5 Markdown editor.
 
 
-Addon SAML2 Web App → Under this Application &amp;gt; Addons &amp;gt; Select SAML2 WEB APP
+  Type some Markdown on the left
+  See HTML in the right
+  ✨Magic ✨
 
 
+Features
 
-Select Settings 
-Under Application Callback URL input  https://.c...
+
+  Import a HTML file and wat...
     </summary>
   
 
@@ -83,23 +82,25 @@ Under Application Callback URL input  https://.c...
 
   
   <entry>
-    <title>Hello HomeLab</title>
-    <link href="http://localhost:4000/posts/Hello-HomeLab/" rel="alternate" type="text/html" title="Hello HomeLab" />
-    <published>2023-09-16T01:00:00+08:00</published>
+    <title>Install Loki on Ubuntu 22.04 LTS</title>
+    <link href="http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/" rel="alternate" type="text/html" title="Install Loki on Ubuntu 22.04 LTS" />
+    <published>2023-09-22T01:00:00+08:00</published>
   
-    <updated>2023-09-16T01:00:00+08:00</updated>
+    <updated>2023-09-22T01:00:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/Hello-HomeLab/</id>
-    <content src="http://localhost:4000/posts/Hello-HomeLab/" />
+    <id>http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/</id>
+    <content src="http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/" />
     <author>
       <name>your_full_name</name>
     </author>
 
   
     
-    <category term="HomeLab" />
+    <category term="Cloudflare" />
     
-    <category term="software" />
+    <category term="Loki" />
+    
+    <category term="Ubuntu" />
     
   
 
@@ -111,36 +112,21 @@ Under Application Callback URL input  https://.c...
 
 
 
-      Welcome
+      Install Loki on Ubuntu 22.04 LTS
 
-Hello and welcome to my homelab docs site!
+Install Loki
 
-console.log()
-console.log()
-console.log()
+Get the latest version tag of Loki from GitHub.
 
-
-name: 'push-remote'
-
-on:
-    push:
-        branches:
-        - master
-        paths-ignore:
-        - .gitignore
-        - READ.md
-        - LICENSE
+LOKI_VERSION=$(curl -s "https://api.github.com/repos/grafana/loki/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
 
 
-sudo apt update &amp;amp;&amp;amp; sudo apt update
-pwd
-pwd
+Create a new directory to store Loki binary and configuration file.
+sudo mkdir /opt/loki
 
 
-Photos
-
-
-
+Download archive from releases page of the Loki repository.
+sudo wget -qO /opt/loki/lo...
     </summary>
   
 
@@ -148,23 +134,25 @@ Photos
 
   
   <entry>
-    <title>Testing</title>
-    <link href="http://localhost:4000/posts/Web-Scraping/" rel="alternate" type="text/html" title="Testing" />
-    <published>2023-09-16T01:00:00+08:00</published>
+    <title>Install Grafana on Ubuntu 22.04 LTS</title>
+    <link href="http://localhost:4000/posts/Install-Grafana-on-Ubuntu-22.04-LTS/" rel="alternate" type="text/html" title="Install Grafana on Ubuntu 22.04 LTS" />
+    <published>2023-09-22T01:00:00+08:00</published>
   
-    <updated>2023-09-16T01:00:00+08:00</updated>
+    <updated>2023-09-22T01:00:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/Web-Scraping/</id>
-    <content src="http://localhost:4000/posts/Web-Scraping/" />
+    <id>http://localhost:4000/posts/Install-Grafana-on-Ubuntu-22.04-LTS/</id>
+    <content src="http://localhost:4000/posts/Install-Grafana-on-Ubuntu-22.04-LTS/" />
     <author>
       <name>your_full_name</name>
     </author>
 
   
     
-    <category term="Home" />
+    <category term="Cloudflare" />
     
-    <category term="software" />
+    <category term="Grafana" />
+    
+    <category term="Ubuntu" />
     
   
 
@@ -176,36 +164,140 @@ Photos
 
 
 
-      Welcome
+      Install Grafana on Ubuntu 22.04 LTS
 
-Hello and welcome to my homelab docs site!
+Install Grafana
 
-console.log()
-console.log()
-console.log()
+Get the latest version of Grafana
 
+Official Grafana Download Page
 
-name: 'push-remote'
-
-on:
-    push:
-        branches:
-        - master
-        paths-ignore:
-        - .gitignore
-        - READ.md
-        - LICENSE
+sudo apt-get install -y adduser libfontconfig1
 
 
-sudo apt update &amp;amp;&amp;amp; sudo apt update
-pwd
-pwd
+Download Grafana for Linux
+wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.4.3_amd64.deb
 
 
-Photos
+Install Grafana
+sudo dpkg -i grafana-enterprise_9.4.3_amd64.deb
+
+
+Start Grafana
+systemctl start grafana-server
+
+
+Che...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Cloudflare Logpush to Grafana Loki Endpoint</title>
+    <link href="http://localhost:4000/posts/Cloudflare-Logpush/" rel="alternate" type="text/html" title="Cloudflare Logpush to Grafana Loki Endpoint" />
+    <published>2023-09-22T01:00:00+08:00</published>
+  
+    <updated>2023-09-22T01:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Cloudflare-Logpush/</id>
+    <content src="http://localhost:4000/posts/Cloudflare-Logpush/" />
+    <author>
+      <name>your_full_name</name>
+    </author>
+
+  
+    
+    <category term="Cloudflare" />
+    
+    <category term="Logpush" />
+    
+  
+
+  
+    <summary>
+      
 
 
 
+
+
+      Cloudflare Logpush to Grafana Loki Endpoint
+
+Cloudflare Logpush
+
+Set up Grafana
+
+Go to Grafana and set up a free account. 
+Alternatively, you can host your own instance of Grafana Install Grafana on Ubuntu
+
+Create a Worker
+
+Create a new Worker with Cloudflare Wrangler
+
+wrangler generate YOUR_WORKER_NAME
+
+
+Index.js
+Edit the index.js file:
+# + Change job label { "job": "cloudflare-logpush-http-re...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>DCV Delegation for Partial Zones</title>
+    <link href="http://localhost:4000/posts/Cloudflare-DCV-Delegation-for-partial-zone/" rel="alternate" type="text/html" title="DCV Delegation for Partial Zones" />
+    <published>2023-09-22T01:00:00+08:00</published>
+  
+    <updated>2023-09-22T20:59:50+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Cloudflare-DCV-Delegation-for-partial-zone/</id>
+    <content src="http://localhost:4000/posts/Cloudflare-DCV-Delegation-for-partial-zone/" />
+    <author>
+      <name>your_full_name</name>
+    </author>
+
+  
+    
+    <category term="Cloudflare" />
+    
+    <category term="DCV" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      DCV Delegation for Partial Zone
+
+DNS &amp;gt; Record (CNAME Setup)
+
+
+
+If you want to host a website name abc.jjonflare.cloud you need to create a partial Zone suffix in your authoritative DNS provider.
+
+
+
+It will look like abc.jjonflare.cloud.cdn.cloudflare.net
+
+Example on Godaddy DNS
+
+
+
+Next create CNAME record in your DNS provider for DCV delegation
+
+Example on Godaddy DNS
+
+_acme-challenge.abc ab...
     </summary>
   
 
