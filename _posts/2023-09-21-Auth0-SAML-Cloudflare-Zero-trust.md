@@ -1,3 +1,10 @@
+---
+title: Auth0 SAML Cloudflare Zero trust
+date: 2023-09-21 12:00:00 -500
+categories: [HomeLab, ZeroTrust]
+tags: [access,saml]     # TAG names should always be lowercase
+---
+
 # Auth0 SAML Cloudflare Zero trust
 
 1. Sign up Auth0 (https://auth0.com/signup)
@@ -25,7 +32,8 @@ Addon SAML2 Web App → Under this Application > Addons > **Select SAML2 WEB APP
 Select **Settings** \
 Under **Application Callback URL** input  https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback \ 
 Scroll down and and click on **Enable**
-<your-team-name> can be found under **Cloudflare Zero Trust > Setting > General Settings** 
+
+`<your-team-name>` can be found under **Cloudflare Zero Trust > Setting > General Settings** 
 
 
 ![]({{ site.baseurl }}/assets/images/Zerotrust/6.callback.png)
@@ -46,13 +54,13 @@ Scroll down and and click on **Enable**
 ![]({{ site.baseurl }}/assets/images/Zerotrust/8.addsaml.png)
 
 4. In Email attribute name, fill in this 👇
-    
+
 [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress] 
 
 
-<kbd> <img src="https://github.com/iamjjchang/Auth0-SAML-Cloudflare-Zerotrust/blob/master/9.optional.png" /> </kbd>
+![]({{ site.baseurl }}/assets/images/Zerotrust/9.optional.png)
 
 1. Once done click on test, you can see this result below
 
-<kbd> <img src="https://github.com/iamjjchang/Auth0-SAML-Cloudflare-Zerotrust/raw/master/10.works.png" /> </kbd>
+![]({{ site.baseurl }}/assets/images/Zerotrust/10.works.png)
 
