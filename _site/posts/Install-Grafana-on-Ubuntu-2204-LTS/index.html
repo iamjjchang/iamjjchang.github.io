@@ -39,25 +39,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.2" />
-<meta property="og:title" content="Install Loki on Ubuntu 22.04 LTS" />
+<meta property="og:title" content="Install Grafana on Ubuntu 22.04 LTS" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Install Loki on Ubuntu 22.04 LTS Install Loki Get the latest version tag of Loki from GitHub. 1 LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;tag_name&quot;: &quot;v\K[0-9.]+&#39;) Create a new directory to store Loki binary and configuration file. 1 sudo mkdir /opt/loki Download archive from releases page of the Loki repository. 1 sudo wget -qO /opt/loki/loki.gz &quot;https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip&quot; Extract binary file from archive: 1 sudo gunzip /opt/loki/loki.gz Set execute permission for file: 1 sudo chmod a+x /opt/loki/loki In /usr/local/bin directory we can create a symbolic link to the loki command: 1 sudo ln -s /opt/loki/loki /usr/local/bin/loki Now loki command is available for all users as a system-wide command. Download configuration file for Loki: 1 sudo wget -qO /opt/loki/loki-local-config.yaml &quot;https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml&quot; To verify installation, we can check Loki version: 1 loki -version Run Loki as a service We can configure systemd for running Loki as a service. Create a systemd unit file: 1 sudo nano /etc/systemd/system/loki.service Add the following content to the file: 1 2 3 4 5 6 7 8 9 10 [Unit] Description=Loki log aggregation system After=network.target [Service] ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml Restart=always [Install] WantedBy=multi-user.target Start Loki service: 1 sudo service loki start To make sure that Loki service is running, you can use the following command: 1 sudo service loki status Also you can stop or restart the service: 1 2 sudo service loki stop sudo service loki restart To enable Loki to start on boot, run the following command: 1 sudo systemctl enable loki Uninstall Loki To completely remove the Loki, stop the service and remove a systemd unit file. 1 2 3 4 5 sudo service loki stop sudo systemctl disable loki sudo rm -rf /etc/systemd/system/loki.service sudo systemctl daemon-reload sudo systemctl reset-failed Delete the installation directory: 1 sudo rm -rf /opt/loki Remove symbolic link: 1 sudo rm -rf /usr/local/bin/loki" />
-<meta property="og:description" content="Install Loki on Ubuntu 22.04 LTS Install Loki Get the latest version tag of Loki from GitHub. 1 LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;tag_name&quot;: &quot;v\K[0-9.]+&#39;) Create a new directory to store Loki binary and configuration file. 1 sudo mkdir /opt/loki Download archive from releases page of the Loki repository. 1 sudo wget -qO /opt/loki/loki.gz &quot;https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip&quot; Extract binary file from archive: 1 sudo gunzip /opt/loki/loki.gz Set execute permission for file: 1 sudo chmod a+x /opt/loki/loki In /usr/local/bin directory we can create a symbolic link to the loki command: 1 sudo ln -s /opt/loki/loki /usr/local/bin/loki Now loki command is available for all users as a system-wide command. Download configuration file for Loki: 1 sudo wget -qO /opt/loki/loki-local-config.yaml &quot;https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml&quot; To verify installation, we can check Loki version: 1 loki -version Run Loki as a service We can configure systemd for running Loki as a service. Create a systemd unit file: 1 sudo nano /etc/systemd/system/loki.service Add the following content to the file: 1 2 3 4 5 6 7 8 9 10 [Unit] Description=Loki log aggregation system After=network.target [Service] ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml Restart=always [Install] WantedBy=multi-user.target Start Loki service: 1 sudo service loki start To make sure that Loki service is running, you can use the following command: 1 sudo service loki status Also you can stop or restart the service: 1 2 sudo service loki stop sudo service loki restart To enable Loki to start on boot, run the following command: 1 sudo systemctl enable loki Uninstall Loki To completely remove the Loki, stop the service and remove a systemd unit file. 1 2 3 4 5 sudo service loki stop sudo systemctl disable loki sudo rm -rf /etc/systemd/system/loki.service sudo systemctl daemon-reload sudo systemctl reset-failed Delete the installation directory: 1 sudo rm -rf /opt/loki Remove symbolic link: 1 sudo rm -rf /usr/local/bin/loki" />
-<link rel="canonical" href="http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/" />
-<meta property="og:url" content="http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/" />
+<meta name="description" content="Install Grafana on Ubuntu 22.04 LTS Install Grafana Get the latest version of Grafana Official Grafana Download Page 1 sudo apt-get install -y adduser libfontconfig1 Download Grafana for Linux 1 wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.4.3_amd64.deb Install Grafana 1 sudo dpkg -i grafana-enterprise_9.4.3_amd64.deb Start Grafana 1 systemctl start grafana-server Check status of Grafana 1 systemctl status grafana-server Additional Plugins to install 1 2 3 grafana-cli plugins install grafana-piechart-panel grafana-cli plugins install fifemon-graphql-datasource grafana-cli plugins install grafana-worldmap-panel Uninstall Grafana The parameter remove will remove installation files while keeping configuration data. 1 sudo apt-get remove grafana Uninstall grafana including dependent package If you would like to remove grafana and it’s dependent packages which are no longer needed from Ubuntu 1 sudo apt-get remove --auto-remove grafana Purging grafana We instruct apt-get to remove configuration files 1 sudo apt-get purge grafana If you use purge options along with auto remove, will be removed everything regarding the package, It’s really useful when you want to reinstall again. 1 sudo apt-get purge --auto-remove grafana" />
+<meta property="og:description" content="Install Grafana on Ubuntu 22.04 LTS Install Grafana Get the latest version of Grafana Official Grafana Download Page 1 sudo apt-get install -y adduser libfontconfig1 Download Grafana for Linux 1 wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.4.3_amd64.deb Install Grafana 1 sudo dpkg -i grafana-enterprise_9.4.3_amd64.deb Start Grafana 1 systemctl start grafana-server Check status of Grafana 1 systemctl status grafana-server Additional Plugins to install 1 2 3 grafana-cli plugins install grafana-piechart-panel grafana-cli plugins install fifemon-graphql-datasource grafana-cli plugins install grafana-worldmap-panel Uninstall Grafana The parameter remove will remove installation files while keeping configuration data. 1 sudo apt-get remove grafana Uninstall grafana including dependent package If you would like to remove grafana and it’s dependent packages which are no longer needed from Ubuntu 1 sudo apt-get remove --auto-remove grafana Purging grafana We instruct apt-get to remove configuration files 1 sudo apt-get purge grafana If you use purge options along with auto remove, will be removed everything regarding the package, It’s really useful when you want to reinstall again. 1 sudo apt-get purge --auto-remove grafana" />
+<link rel="canonical" href="http://localhost:4000/posts/Install-Grafana-on-Ubuntu-2204-LTS/" />
+<meta property="og:url" content="http://localhost:4000/posts/Install-Grafana-on-Ubuntu-2204-LTS/" />
 <meta property="og:site_name" content="HomeLab Docs1" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-09-22T01:00:00+08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Install Loki on Ubuntu 22.04 LTS" />
+<meta property="twitter:title" content="Install Grafana on Ubuntu 22.04 LTS" />
 <meta name="twitter:site" content="@twitter_username" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-09-22T01:00:00+08:00","datePublished":"2023-09-22T01:00:00+08:00","description":"Install Loki on Ubuntu 22.04 LTS Install Loki Get the latest version tag of Loki from GitHub. 1 LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;tag_name&quot;: &quot;v\\K[0-9.]+&#39;) Create a new directory to store Loki binary and configuration file. 1 sudo mkdir /opt/loki Download archive from releases page of the Loki repository. 1 sudo wget -qO /opt/loki/loki.gz &quot;https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip&quot; Extract binary file from archive: 1 sudo gunzip /opt/loki/loki.gz Set execute permission for file: 1 sudo chmod a+x /opt/loki/loki In /usr/local/bin directory we can create a symbolic link to the loki command: 1 sudo ln -s /opt/loki/loki /usr/local/bin/loki Now loki command is available for all users as a system-wide command. Download configuration file for Loki: 1 sudo wget -qO /opt/loki/loki-local-config.yaml &quot;https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml&quot; To verify installation, we can check Loki version: 1 loki -version Run Loki as a service We can configure systemd for running Loki as a service. Create a systemd unit file: 1 sudo nano /etc/systemd/system/loki.service Add the following content to the file: 1 2 3 4 5 6 7 8 9 10 [Unit] Description=Loki log aggregation system After=network.target [Service] ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml Restart=always [Install] WantedBy=multi-user.target Start Loki service: 1 sudo service loki start To make sure that Loki service is running, you can use the following command: 1 sudo service loki status Also you can stop or restart the service: 1 2 sudo service loki stop sudo service loki restart To enable Loki to start on boot, run the following command: 1 sudo systemctl enable loki Uninstall Loki To completely remove the Loki, stop the service and remove a systemd unit file. 1 2 3 4 5 sudo service loki stop sudo systemctl disable loki sudo rm -rf /etc/systemd/system/loki.service sudo systemctl daemon-reload sudo systemctl reset-failed Delete the installation directory: 1 sudo rm -rf /opt/loki Remove symbolic link: 1 sudo rm -rf /usr/local/bin/loki","headline":"Install Loki on Ubuntu 22.04 LTS","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/"},"url":"http://localhost:4000/posts/Install-Loki-on-Ubuntu-22.04-LTS/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-09-22T01:00:00+08:00","datePublished":"2023-09-22T01:00:00+08:00","description":"Install Grafana on Ubuntu 22.04 LTS Install Grafana Get the latest version of Grafana Official Grafana Download Page 1 sudo apt-get install -y adduser libfontconfig1 Download Grafana for Linux 1 wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.4.3_amd64.deb Install Grafana 1 sudo dpkg -i grafana-enterprise_9.4.3_amd64.deb Start Grafana 1 systemctl start grafana-server Check status of Grafana 1 systemctl status grafana-server Additional Plugins to install 1 2 3 grafana-cli plugins install grafana-piechart-panel grafana-cli plugins install fifemon-graphql-datasource grafana-cli plugins install grafana-worldmap-panel Uninstall Grafana The parameter remove will remove installation files while keeping configuration data. 1 sudo apt-get remove grafana Uninstall grafana including dependent package If you would like to remove grafana and it’s dependent packages which are no longer needed from Ubuntu 1 sudo apt-get remove --auto-remove grafana Purging grafana We instruct apt-get to remove configuration files 1 sudo apt-get purge grafana If you use purge options along with auto remove, will be removed everything regarding the package, It’s really useful when you want to reinstall again. 1 sudo apt-get purge --auto-remove grafana","headline":"Install Grafana on Ubuntu 22.04 LTS","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Install-Grafana-on-Ubuntu-2204-LTS/"},"url":"http://localhost:4000/posts/Install-Grafana-on-Ubuntu-2204-LTS/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>Install Loki on Ubuntu 22.04 LTS | HomeLab Docs1
+  <title>Install Grafana on Ubuntu 22.04 LTS | HomeLab Docs1
   </title>
 
   <!--
@@ -468,7 +468,7 @@
         
           
             
-              <span>Install Loki on Ubuntu 22.04 LTS</span>
+              <span>Install Grafana on Ubuntu 22.04 LTS</span>
             
 
           
@@ -588,18 +588,6 @@
       
 
     
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
 
     
 
@@ -629,7 +617,7 @@
 
 
 <header>
-  <h1 data-toc-skip>Install Loki on Ubuntu 22.04 LTS</h1>
+  <h1 data-toc-skip>Install Grafana on Ubuntu 22.04 LTS</h1>
 
   <div class="post-meta text-muted">
     <!-- published date -->
@@ -696,7 +684,7 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="298 words"
+  title="164 words"
 >
   <em>1 min</em> read</span>
 
@@ -707,162 +695,91 @@
 </header>
 
 <div class="content">
-  <h1 id="install-loki-on-ubuntu-2204-lts">Install Loki on Ubuntu 22.04 LTS</h1>
+  <h1 id="install-grafana-on-ubuntu-2204-lts">Install Grafana on Ubuntu 22.04 LTS</h1>
 
-<h2 id="install-loki"><span class="me-2">Install Loki</span><a href="#install-loki" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="install-grafana"><span class="me-2">Install Grafana</span><a href="#install-grafana" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>Get the latest version tag of Loki from GitHub.</p>
+<p>Get the latest version of Grafana</p>
+
+<p><a href="https://grafana.com/grafana/download?platform=linux">Official Grafana Download Page</a></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>LOKI_VERSION=$(curl -s "https://api.github.com/repos/grafana/loki/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+</pre></td><td class="rouge-code"><pre>sudo apt-get install -y adduser libfontconfig1
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Create a new directory to store Loki binary and configuration file.</p>
+<p>Download Grafana for Linux</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo mkdir /opt/loki
+</pre></td><td class="rouge-code"><pre>wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.4.3_amd64.deb
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Download archive from releases page of the Loki repository.</p>
+<p>Install Grafana</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo wget -qO /opt/loki/loki.gz "https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip"
+</pre></td><td class="rouge-code"><pre>sudo dpkg -i grafana-enterprise_9.4.3_amd64.deb
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Extract binary file from archive:</p>
+<p>Start Grafana</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo gunzip /opt/loki/loki.gz
+</pre></td><td class="rouge-code"><pre>systemctl start grafana-server
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Set execute permission for file:</p>
+<p>Check status of Grafana</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo chmod a+x /opt/loki/loki
+</pre></td><td class="rouge-code"><pre>systemctl status grafana-server
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>In <code class="language-plaintext highlighter-rouge">/usr/local/bin</code> directory we can create a symbolic link to the loki command:</p>
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo ln -s /opt/loki/loki /usr/local/bin/loki
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>Now loki command is available for all users as a system-wide command.<br />
-Download configuration file for Loki:</p>
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo wget -qO /opt/loki/loki-local-config.yaml "https://raw.githubusercontent.com/grafana/loki/v${LOKI_VERSION}/cmd/loki/loki-local-config.yaml"
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>To verify installation, we can check Loki version:</p>
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>loki -version
-</pre></td></tr></tbody></table></code></div></div>
-
-<h2 id="run-loki-as-a-service"><span class="me-2">Run Loki as a service</span><a href="#run-loki-as-a-service" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p>We can configure systemd for running Loki as a service. Create a systemd unit file:</p>
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo nano /etc/systemd/system/loki.service
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>Add the following content to the file:</p>
+<p>Additional Plugins to install</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="rouge-code"><pre>[Unit]
-Description=Loki log aggregation system
-After=network.target
-
-[Service]
-ExecStart=/opt/loki/loki -config.file=/opt/loki/loki-local-config.yaml
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
+</pre></td><td class="rouge-code"><pre>grafana-cli plugins install grafana-piechart-panel
+grafana-cli plugins install fifemon-graphql-datasource
+grafana-cli plugins install grafana-worldmap-panel
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Start Loki service:</p>
+<h2 id="uninstall-grafana"><span class="me-2">Uninstall Grafana</span><a href="#uninstall-grafana" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>The parameter <code class="language-plaintext highlighter-rouge">remove</code> will remove installation files while keeping configuration data.</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo service loki start
+</pre></td><td class="rouge-code"><pre>sudo apt-get remove grafana 
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>To make sure that Loki service is running, you can use the following command:</p>
+<p><strong>Uninstall grafana including dependent package</strong> <br />
+If you would like to remove grafana and it’s dependent packages which are no longer needed from Ubuntu</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo service loki status
+</pre></td><td class="rouge-code"><pre>sudo apt-get remove --auto-remove grafana 
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>Also you can stop or restart the service:</p>
+<p><strong>Purging grafana</strong> <br />
+We instruct apt-get to remove configuration files</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre>sudo service loki stop
-sudo service loki restart
+</pre></td><td class="rouge-code"><pre>sudo apt-get purge grafana 
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>To enable Loki to start on boot, run the following command:</p>
+<p>If you use purge options along with auto remove, will be removed everything regarding the package, It’s really useful when you want to reinstall again.</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo systemctl enable loki
+</pre></td><td class="rouge-code"><pre>sudo apt-get purge --auto-remove grafana 
 </pre></td></tr></tbody></table></code></div></div>
-
-<h2 id="uninstall-loki"><span class="me-2">Uninstall Loki</span><a href="#uninstall-loki" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-<p>To completely remove the Loki, stop the service and remove a systemd unit file.</p>
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre>sudo service loki stop
-sudo systemctl disable loki
-sudo rm -rf /etc/systemd/system/loki.service
-sudo systemctl daemon-reload
-sudo systemctl reset-failed
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>Delete the installation directory:</p>
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo rm -rf /opt/loki
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>Remove symbolic link:</p>
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>sudo rm -rf /usr/local/bin/loki
-</pre></td></tr></tbody></table></code></div></div>
-
 
 </div>
 
@@ -873,7 +790,7 @@ sudo systemctl reset-failed
       <i class="far fa-folder-open fa-fw me-1"></i>
       
         <a href="/categories/cloudflare/">Cloudflare</a>,
-        <a href="/categories/loki/">Loki</a>,
+        <a href="/categories/grafana/">Grafana</a>,
         <a href="/categories/ubuntu/">Ubuntu</a>
     </div>
   
@@ -911,7 +828,7 @@ sudo systemctl reset-failed
     
       
       <a
-        href="https://twitter.com/intent/tweet?text=Install%20Loki%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Loki-on-Ubuntu-22.04-LTS%2F"
+        href="https://twitter.com/intent/tweet?text=Install%20Grafana%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Grafana-on-Ubuntu-2204-LTS%2F"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Twitter"
@@ -924,7 +841,7 @@ sudo systemctl reset-failed
     
       
       <a
-        href="https://www.facebook.com/sharer/sharer.php?title=Install%20Loki%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Loki-on-Ubuntu-22.04-LTS%2F"
+        href="https://www.facebook.com/sharer/sharer.php?title=Install%20Grafana%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Grafana-on-Ubuntu-2204-LTS%2F"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Facebook"
@@ -937,7 +854,7 @@ sudo systemctl reset-failed
     
       
       <a
-        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Loki-on-Ubuntu-22.04-LTS%2F&text=Install%20Loki%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1"
+        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FInstall-Grafana-on-Ubuntu-2204-LTS%2F&text=Install%20Grafana%20on%20Ubuntu%2022.04%20LTS%20-%20HomeLab%20Docs1"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Telegram"
@@ -1331,19 +1248,19 @@ sudo systemctl reset-failed
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
   
 
   
@@ -1383,7 +1300,7 @@ sudo systemctl reset-failed
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       
         <article class="col">
-          <a href="/posts/Install-Grafana-on-Ubuntu-22.04-LTS/" class="post-preview card h-100">
+          <a href="/posts/Install-Loki-on-Ubuntu-2204-LTS/" class="post-preview card h-100">
             <div class="card-body">
               <!--
   Date format snippet
@@ -1404,7 +1321,7 @@ sudo systemctl reset-failed
   Sep 22, 2023
 </time>
 
-              <h4 class="pt-0 my-2">Install Grafana on Ubuntu 22.04 LTS</h4>
+              <h4 class="pt-0 my-2">Install Loki on Ubuntu 22.04 LTS</h4>
               <div class="text-muted small">
                 <p>
                   
@@ -1413,19 +1330,14 @@ sudo systemctl reset-failed
 
 
 
-                  Install Grafana on Ubuntu 22.04 LTS
+                  Install Loki on Ubuntu 22.04 LTS
 
-Install Grafana
+Install Loki
 
-Get the latest version of Grafana
+Get the latest version tag of Loki from GitHub.
 
-Official Grafana Download Page
-
-sudo apt-get install -y adduser libfontconfig1
-
-
-Download Grafana for Linux
-...
+1
+LOKI_VERSION=$(curl -s &quot;https://api.github.com/repos/grafana/loki/releases/latest&quot; | grep -Po &#39;&quot;ta...
                 </p>
               </div>
             </div>
@@ -1536,21 +1448,21 @@ Alternatively, you can host your own instance of Grafana Install Grafana o...
 
   
     <a
-      href="/posts/Install-Grafana-on-Ubuntu-22.04-LTS/"
+      href="/posts/Cloudflare-Logpush/"
       class="btn btn-outline-primary"
       aria-label="Older"
     >
-      <p>Install Grafana on Ubuntu 22.04 LTS</p>
+      <p>Cloudflare Logpush to Grafana Loki Endpoint</p>
     </a>
   
 
   
     <a
-      href="/posts/Markdown-guide/"
+      href="/posts/Install-Loki-on-Ubuntu-2204-LTS/"
       class="btn btn-outline-primary"
       aria-label="Newer"
     >
-      <p>Markdown guide</p>
+      <p>Install Loki on Ubuntu 22.04 LTS</p>
     </a>
   
 </nav>
