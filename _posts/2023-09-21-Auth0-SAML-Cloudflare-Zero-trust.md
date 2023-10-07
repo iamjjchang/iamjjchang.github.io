@@ -5,8 +5,6 @@ categories: [HomeLab, ZeroTrust]
 tags: [access,saml]     # TAG names should always be lowercase
 ---
 
-# Auth0 SAML Cloudflare Zero trust
-
 1. Sign up Auth0 (https://auth0.com/signup)
 
 ![]({{ site.baseurl }}/assets/images/Zerotrust/1.usermanagement.png)

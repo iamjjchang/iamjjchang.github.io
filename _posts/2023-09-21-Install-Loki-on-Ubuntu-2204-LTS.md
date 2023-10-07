@@ -5,8 +5,6 @@ categories: [Cloudflare, Loki, Ubuntu]
 tags: [server]     # TAG names should always be lowercase
 ---
 
-# Install Loki on Ubuntu 22.04 LTS
-
 ## Install Loki
 
 Get the latest version tag of Loki from GitHub.

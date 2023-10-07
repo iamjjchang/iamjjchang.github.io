@@ -5,8 +5,6 @@ categories: [Cloudflare, DCV]
 tags: [cname, dns]     # TAG names should always be lowercase
 ---
 
-# DCV Delegation for Partial Zone
-
 ## DNS > Record (CNAME Setup)
 
 ![]({{ site.baseurl }}/assets/images/CNameDCV/1.CNAMEDNS.png)

@@ -5,8 +5,6 @@ categories: [Cloudflare, Logpush]
 tags: [log]     # TAG names should always be lowercase
 ---
 
-# Cloudflare Logpush to Grafana Loki Endpoint
-
 [Cloudflare Logpush](https://developers.cloudflare.com/logs/about/)
 
 ## Set up Grafana

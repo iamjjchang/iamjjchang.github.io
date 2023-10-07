@@ -5,8 +5,6 @@ categories: [Cloudflare, Grafana, Ubuntu]
 tags: [server]     # TAG names should always be lowercase
 ---
 
-# Install Grafana on Ubuntu 22.04 LTS
-
 ## Install Grafana
 
 Get the latest version of Grafana
@@ -60,7 +58,7 @@ sudo apt-get remove --auto-remove grafana
 ```
 
 **Purging grafana** \
-We instruct apt-get to remove configuration files
+`apt-get` to remove configuration files
 ```
 sudo apt-get purge grafana 
 ```
