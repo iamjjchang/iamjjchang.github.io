@@ -41,3 +41,8 @@ Running hooks in /etc/ca-certificates/update.d...
 done.
 
 ```
+
+The main ca cert store is in
+```sh
+$ cd /etc/ssl/certs
+```
