@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Pages
-date: 2023-09-15 12:00:00 -500
+date: 2024-07-27 12:00:00 -500
 categories: [HomeLab, software]
 tags: [cloudflare,github,pages]     # TAG names should always be lowercase
 ---

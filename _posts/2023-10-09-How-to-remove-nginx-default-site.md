@@ -1,6 +1,6 @@
 ---
 title: How to remove Nginx defualt site
-date: 2023-09-23 12:00:00 -500
+date: 2023-10-17 12:00:00 -500
 categories: [Cloudflare, ZeroTrust]
 tags: [Network]     # TAG names should always be lowercase
 ---

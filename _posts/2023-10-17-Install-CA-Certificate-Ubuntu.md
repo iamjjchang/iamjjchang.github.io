@@ -1,6 +1,6 @@
 ---
 title: Install CA Certificate on Ubuntu 22.04 LTS
-date: 2023-09-21 12:00:00 -500
+date: 2023-10-17 12:00:00 -500
 categories: [HomeLab, Ubuntu]
 tags: [certificate,CA,PKI]     # TAG names should always be lowercase
 ---
