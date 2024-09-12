@@ -2,7 +2,7 @@
 title: Auth0 SAML Cloudflare Zero trust
 date: 2023-09-21 12:00:00 -500
 categories: [HomeLab, ZeroTrust]
-tags: [access,saml]     # TAG names should always be lowercase
+tags: [github]     # TAG names should always be lowercase
 ---
 
 1. Sign up Auth0 (https://auth0.com/signup)
